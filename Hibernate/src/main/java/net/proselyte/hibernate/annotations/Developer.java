@@ -13,7 +13,7 @@ import javax.persistence.Table;
 //@Table(name="hibernate_developers")
 public class Developer {
     @Id
-    @GeneratedValue (strategy = GenerationType.AUTO)
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column (name = "id")
     private int id;
     @Column (name = "FIRST_NAME")

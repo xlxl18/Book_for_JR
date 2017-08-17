@@ -101,11 +101,11 @@
 
 
         <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-annotations -->
-        <dependency>
+        <!--dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-annotations</artifactId>
             <version>3.5.6-Final</version>
-        </dependency>
+        </dependency-->
 
 
         <dependency>
