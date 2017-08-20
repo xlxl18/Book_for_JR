@@ -10,12 +10,13 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="HIBERNATE_DEVELOPERS")
-//@Table(name="hibernate_developers")
+
 public class Developer {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column (name = "id")
     private int id;
+
     @Column (name = "FIRST_NAME")
     private String firstName;
     @Column (name = "LAST_NAME")
