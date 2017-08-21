@@ -38,4 +38,10 @@ public class HelloController {
         return "hello3";
     }
 
+    @RequestMapping(value="/4", method = RequestMethod.GET)
+    public String printWelcome4(ModelMap model) {
+
+        return "index1";
+    }
+
 }

@@ -12,7 +12,7 @@ import javax.sql.DataSource;
 @PropertySource(value = {"classpath:application.properties"})
 public class DataSourceConfig {
     @Autowired
-    private Environment environment;
+    private Environment environment; // для подстановки значений в конфигурационные файлы Spring
 
     @Bean
     public DataSource getDataSource() {

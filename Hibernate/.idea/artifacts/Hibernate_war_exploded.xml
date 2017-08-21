@@ -40,6 +40,20 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-orm:4.2.1.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:4.2.1.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-tx:4.2.1.RELEASE" />
+          <element id="library" level="project" name="Maven: org.zkoss.zk:zkbind:8.0.2.2" />
+          <element id="library" level="project" name="Maven: org.zkoss.zk:zul:8.0.2.2" />
+          <element id="library" level="project" name="Maven: org.zkoss.zk:zk:8.0.2.2" />
+          <element id="library" level="project" name="Maven: org.zkoss.common:zweb:8.0.2.2" />
+          <element id="library" level="project" name="Maven: org.zkoss.common:zcommon:8.0.2.2" />
+          <element id="library" level="project" name="Maven: commons-fileupload:commons-fileupload:1.2.2" />
+          <element id="library" level="project" name="Maven: org.zkoss.common:zel:8.0.2.2" />
+          <element id="library" level="project" name="Maven: org.apache-extras.beanshell:bsh:2.0b6" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.5" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-jdk14:1.7.5" />
+          <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.8" />
+          <element id="library" level="project" name="Maven: org.zkoss.zk:zkplus:8.0.2.2" />
+          <element id="library" level="project" name="Maven: org.zkoss.zk:zhtml:8.0.2.2" />
+          <element id="library" level="project" name="Maven: org.zkoss:zsoup:1.8.2.5" />
         </element>
       </element>
       <element id="directory" name="META-INF">

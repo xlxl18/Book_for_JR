@@ -42,7 +42,7 @@ public class HibernateController {
 
 
         model.addAttribute("message", "Hello world! - 3");
-        model.addAttribute("message", qqq);
+        model.addAttribute("message2", qqq);
        //model.addAttribute("message", "Hello world! - 3");
 
         return "hello3";

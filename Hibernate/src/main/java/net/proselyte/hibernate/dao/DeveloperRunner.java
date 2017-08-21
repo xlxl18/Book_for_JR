@@ -104,8 +104,8 @@ public class DeveloperRunner implements DeveloperDAOHibernate {
 @Override
     public List<Developer> listDevelopersReturn() {
         List<Developer> developers;
-        Session session = getCurrentSession();
-       // Session session = sessionFactory.openSession();
+        //Session session = getCurrentSession();
+        Session session = sessionFactory.openSession();
         Transaction transaction = null;
 
         transaction = session.beginTransaction();
