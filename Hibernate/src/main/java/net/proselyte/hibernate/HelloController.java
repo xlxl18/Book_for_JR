@@ -11,7 +11,7 @@ public class HelloController {
 
     @RequestMapping(value="/", method = RequestMethod.GET)
     public String printWelcome0(ModelMap model) {
-        model.addAttribute("message", "Hello world! - 0");
+        model.addAttribute("message", "Hello, Andrey!");
         return "hello";
     }
 
@@ -30,9 +30,11 @@ public class HelloController {
 
     @RequestMapping(value="/3", method = RequestMethod.GET)
     public String printWelcome3(ModelMap model) {
+
         model.addAttribute("message", "Hello world! - 3");
         model.addAttribute("message", "Hello world! - 3");
 
+      //  DeveloperRunner.listDevelopersReturn();
         return "hello3";
     }
 

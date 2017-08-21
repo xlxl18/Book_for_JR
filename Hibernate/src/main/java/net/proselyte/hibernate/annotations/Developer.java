@@ -12,8 +12,7 @@ import javax.persistence.Table;
 @Table(name="HIBERNATE_DEVELOPERS")
 
 public class Developer {
-    @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column (name = "id")
     private int id;
 

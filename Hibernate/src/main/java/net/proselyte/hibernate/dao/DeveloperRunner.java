@@ -1,17 +1,27 @@
-package net.proselyte.hibernate.annotations;
+package net.proselyte.hibernate.dao;
 
-import org.hibernate.Query;
+
+import net.proselyte.hibernate.annotations.Developer;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
-
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import java.util.List;
 
-public class DeveloperRunner {
-    private static SessionFactory sessionFactory;
+//это и MAIN и DAO, MAIN убираем!!!!!!!
+import java.util.List;
+@Repository
+public class DeveloperRunner implements DeveloperDAOHibernate {
 
+    @Autowired
+    private SessionFactory sessionFactory;
+
+    private Session getCurrentSession() {
+        return this.sessionFactory.getCurrentSession();
+    }
+/*
     public static void main(String[] args) {
         sessionFactory = new Configuration().configure().buildSessionFactory();
 
@@ -32,7 +42,10 @@ public class DeveloperRunner {
         System.out.println("Final list of Developers:");
         developerRunner.listDevelopers();
     }
+    */
 
+
+    @Override
     public Integer addDeveloper(String firstName, String lastName, String specialty, int experience) {
         Session session = sessionFactory.openSession();
         Transaction transaction = null;
@@ -45,9 +58,10 @@ public class DeveloperRunner {
         session.close();
         return developerId;
     }
-
+@Override
     public void listDevelopers() {
         Session session = sessionFactory.openSession();
+
         Transaction transaction = null;
 
         transaction = session.beginTransaction();
@@ -59,6 +73,8 @@ public class DeveloperRunner {
         session.close();
     }
 
+
+@Override
     public void updateDeveloper(int developerId, int experience) {
         Session session = sessionFactory.openSession();
         Transaction transaction = null;
@@ -71,6 +87,9 @@ public class DeveloperRunner {
         session.close();
     }
 
+
+
+    @Override
     public void removeDeveloper(int developerId) {
         Session session = sessionFactory.openSession();
         Transaction transaction = null;
@@ -80,5 +99,19 @@ public class DeveloperRunner {
         session.delete(developer);
         transaction.commit();
         session.close();
+    }
+
+@Override
+    public List<Developer> listDevelopersReturn() {
+        List<Developer> developers;
+        Session session = getCurrentSession();
+       // Session session = sessionFactory.openSession();
+        Transaction transaction = null;
+
+        transaction = session.beginTransaction();
+        developers = session.createQuery("FROM Developer").list();
+        session.close();
+        return developers;
+
     }
 }
