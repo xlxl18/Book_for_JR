@@ -28,17 +28,11 @@ public class HibernateConfig {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource);
-        sessionFactory.setPackagesToScan(new String[] { "net.proselyte.hibernate.annotations" });
+        sessionFactory.setPackagesToScan(new String[] { "net.proselyte.hibernate" });
         return sessionFactory;
     }
 
-    @Bean
-    @Autowired
-    public HibernateTransactionManager hibernateTransactionManager(SessionFactory s) {
-        HibernateTransactionManager txManager = new HibernateTransactionManager();
-        txManager.setSessionFactory(s);
-        return txManager;
-    }
+
 
     @Bean
     public DeveloperRunner getNewDevHibernateDAO() {
