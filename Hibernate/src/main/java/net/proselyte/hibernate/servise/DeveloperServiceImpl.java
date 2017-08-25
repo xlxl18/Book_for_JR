@@ -1,6 +1,6 @@
 package net.proselyte.hibernate.servise;
 
-import net.proselyte.hibernate.annotations.Developer;
+import net.proselyte.hibernate.annotations.User;
 import net.proselyte.hibernate.dao.DeveloperDAOHibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -37,7 +37,7 @@ public class DeveloperServiceImpl  implements  DeveloperService {
     }
 
     @Override
-    public List<Developer> listDevelopersReturn() {
+    public List<User> listDevelopersReturn() {
         return developerDAOHibernate.listDevelopersReturn();
     }
 }

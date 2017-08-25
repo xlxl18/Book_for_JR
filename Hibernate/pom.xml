@@ -10,7 +10,7 @@
     <properties>
         <spring.version>4.1.1.RELEASE</spring.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <zk.version>8.0.2.2</zk.version>
+
     </properties>
 
     <dependencyManagement>
@@ -100,51 +100,20 @@
             <artifactId>spring-orm</artifactId>
             <version>4.2.1.RELEASE</version>
         </dependency>
-                        <!-- ZK -->
         <dependency>
-            <groupId>org.zkoss.zk</groupId>
-            <artifactId>zkbind</artifactId>
-            <version>${zk.version}</version>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
         </dependency>
+
+        <!--JSF (include "jsf-api" and "jsf-impl")-->
         <dependency>
-            <groupId>org.zkoss.zk</groupId>
-            <artifactId>zul</artifactId>
-            <version>${zk.version}</version>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.faces</artifactId>
+            <version>2.2.10</version>
         </dependency>
-        <dependency>
-            <groupId>org.zkoss.zk</groupId>
-            <artifactId>zkplus</artifactId>
-            <version>${zk.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.zkoss.zk</groupId>
-            <artifactId>zhtml</artifactId>
-            <version>${zk.version}</version>
-        </dependency>
+
     </dependencies>
-
-    <repositories>
-        <repository>
-            <id>ZK CE</id>
-            <name>ZK CE Repository</name>
-            <url>http://mavensync.zkoss.org/maven2</url>
-        </repository>
-        <repository>
-            <id>ZK EVAL</id>
-            <name>ZK Evaluation Repository</name>
-            <url>http://mavensync.zkoss.org/eval</url>
-        </repository>
-    </repositories>
-
-
-    <pluginRepositories>
-        <pluginRepository>
-            <id>zkmaven</id>
-            <name>ZK Maven Plugin Repository</name>
-            <url>http://mavensync.zkoss.org/maven2/</url>
-        </pluginRepository>
-    </pluginRepositories>
-
 
     <build>
         <finalName>Hibernate</finalName>

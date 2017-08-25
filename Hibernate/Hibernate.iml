@@ -91,19 +91,7 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-orm:4.2.1.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-jdbc:4.2.1.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-tx:4.2.1.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.zkoss.zk:zkbind:8.0.2.2" level="project" />
-    <orderEntry type="library" name="Maven: org.zkoss.zk:zul:8.0.2.2" level="project" />
-    <orderEntry type="library" name="Maven: org.zkoss.zk:zk:8.0.2.2" level="project" />
-    <orderEntry type="library" name="Maven: org.zkoss.common:zweb:8.0.2.2" level="project" />
-    <orderEntry type="library" name="Maven: org.zkoss.common:zcommon:8.0.2.2" level="project" />
-    <orderEntry type="library" name="Maven: commons-fileupload:commons-fileupload:1.2.2" level="project" />
-    <orderEntry type="library" name="Maven: org.zkoss.common:zel:8.0.2.2" level="project" />
-    <orderEntry type="library" name="Maven: org.apache-extras.beanshell:bsh:2.0b6" level="project" />
-    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.5" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.slf4j:slf4j-jdk14:1.7.5" level="project" />
-    <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.8" level="project" />
-    <orderEntry type="library" name="Maven: org.zkoss.zk:zkplus:8.0.2.2" level="project" />
-    <orderEntry type="library" name="Maven: org.zkoss.zk:zhtml:8.0.2.2" level="project" />
-    <orderEntry type="library" name="Maven: org.zkoss:zsoup:1.8.2.5" level="project" />
+    <orderEntry type="library" name="Maven: jstl:jstl:1.2" level="project" />
+    <orderEntry type="library" name="Maven: org.glassfish:javax.faces:2.2.10" level="project" />
   </component>
 </module>

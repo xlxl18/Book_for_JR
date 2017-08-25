@@ -11,7 +11,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="HIBERNATE_DEVELOPERS")
 
-public class Developer {
+public class User {
     @Id @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column (name = "id")
     private int id;
@@ -28,13 +28,13 @@ public class Developer {
     /**
      * Default Constructor
      */
-    public Developer() {
+    public User() {
     }
 
     /**
      * Plain constructor
      */
-    public Developer(String firstName, String lastName, String specialty, int experience) {
+    public User(String firstName, String lastName, String specialty, int experience) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.specialty = specialty;
