@@ -15,14 +15,13 @@ public class Developer {
     @Id @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column (name = "id")
     private int id;
-
-    @Column (name = "FIRST_NAME")
+    @Column (name = "NAME")
     private String firstName;
-    @Column (name = "LAST_NAME")
+    @Column (name = "AGE")
     private String lastName;
-    @Column (name = "SPECIALTY")
+    @Column (name = "isAdmin")
     private String specialty;
-    @Column (name = "EXPERIENCE")
+    @Column (name = "CREATEDDATE")
     private int experience;
 
     /**
