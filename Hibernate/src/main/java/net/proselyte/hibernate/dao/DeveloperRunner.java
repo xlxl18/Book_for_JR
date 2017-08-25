@@ -21,14 +21,14 @@ public class DeveloperRunner implements DeveloperDAOHibernate {
     private Session getCurrentSession() {
         return this.sessionFactory.getCurrentSession();
     }
-/*
+
     public static void main(String[] args) {
-        sessionFactory = new Configuration().configure().buildSessionFactory();
+ /*      sessionFactory = new Configuration().configure().buildSessionFactory();
 
         DeveloperRunner developerRunner = new DeveloperRunner();
 
         System.out.println("Adding Developer's records to the database");
-        Integer developerId1 = developerRunner.addDeveloper("Proselyte", "Developer", "Java Developer", 2);
+        Integer developerId1 = developerRunner.addDeveloper("Proselyte", 5, "Java Developer", 2);
         Integer developerId2 = developerRunner.addDeveloper("Some", "Developer", "C++ Developer", 2);
         Integer developerId3 = developerRunner.addDeveloper("Peter", "Team Lead", "Java Team Lead", 6);
 
@@ -41,8 +41,9 @@ public class DeveloperRunner implements DeveloperDAOHibernate {
 
         System.out.println("Final list of Developers:");
         developerRunner.listDevelopers();
+        */
     }
-    */
+
 
 
     @Override
