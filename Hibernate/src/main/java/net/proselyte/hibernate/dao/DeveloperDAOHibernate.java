@@ -1,7 +1,7 @@
 package net.proselyte.hibernate.dao;
 
 
-import net.proselyte.hibernate.annotations.Developer;
+import net.proselyte.hibernate.annotations.User;
 
 import java.util.List;
 
@@ -11,5 +11,5 @@ public interface DeveloperDAOHibernate {
      void removeDeveloper(int developerId);
      void listDevelopers();
      void updateDeveloper(int developerId, int experience);
-     List<Developer> listDevelopersReturn();
+     List<User> listDevelopersReturn();
 }

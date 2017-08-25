@@ -1,7 +1,7 @@
 package net.proselyte.hibernate.config;
 
 
-import net.proselyte.hibernate.annotations.Developer;
+import net.proselyte.hibernate.annotations.User;
 import net.proselyte.hibernate.dao.DeveloperRunner;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;

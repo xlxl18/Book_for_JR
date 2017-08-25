@@ -1,7 +1,7 @@
 package net.proselyte.hibernate.dao;
 
 
-import net.proselyte.hibernate.annotations.Developer;
+import net.proselyte.hibernate.annotations.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -52,7 +52,7 @@ public class DeveloperRunner implements DeveloperDAOHibernate {
         Integer developerId = null;
 
         transaction = session.beginTransaction();
-        Developer developer = new Developer(firstName, lastName, specialty, experience);
+        User developer = new User(firstName, lastName, specialty, experience);
         developerId = (Integer) session.save(developer);
         transaction.commit();
         session.close();
@@ -65,8 +65,8 @@ public class DeveloperRunner implements DeveloperDAOHibernate {
         Transaction transaction = null;
 
         transaction = session.beginTransaction();
-        List<Developer> developers = session.createQuery("FROM Developer").list();
-        for (Developer developer : developers) {
+        List<User> developers = session.createQuery("FROM User").list();
+        for (User developer : developers) {
             System.out.println(developer);
             System.out.println("\n================\n");
         }
@@ -80,7 +80,7 @@ public class DeveloperRunner implements DeveloperDAOHibernate {
         Transaction transaction = null;
 
         transaction = session.beginTransaction();
-        Developer developer = (Developer) session.get(Developer.class, developerId);
+    User developer = (User) session.get(User.class, developerId);
         developer.setExperience(experience);
         session.update(developer);
         transaction.commit();
@@ -95,21 +95,21 @@ public class DeveloperRunner implements DeveloperDAOHibernate {
         Transaction transaction = null;
 
         transaction = session.beginTransaction();
-        Developer developer = (Developer) session.get(Developer.class, developerId);
+        User developer = (User) session.get(User.class, developerId);
         session.delete(developer);
         transaction.commit();
         session.close();
     }
 
 @Override
-    public List<Developer> listDevelopersReturn() {
-        List<Developer> developers;
+    public List<User> listDevelopersReturn() {
+        List<User> developers;
         //Session session = getCurrentSession();
         Session session = sessionFactory.openSession();
         Transaction transaction = null;
 
         transaction = session.beginTransaction();
-        developers = session.createQuery("FROM Developer").list();
+        developers = session.createQuery("FROM User").list();
         session.close();
         return developers;
 
