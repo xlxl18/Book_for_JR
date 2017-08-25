@@ -18,19 +18,19 @@
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="10" parent="7" name="FIRST_NAME">
+    <column id="10" parent="7" name="NAME">
       <Position>2</Position>
       <DataType>varchar(50)|0</DataType>
     </column>
-    <column id="11" parent="7" name="LAST_NAME">
+    <column id="11" parent="7" name="Age">
       <Position>3</Position>
       <DataType>varchar(50)|0</DataType>
     </column>
-    <column id="12" parent="7" name="SPECIALTY">
+    <column id="12" parent="7" name="isAdmin">
       <Position>4</Position>
       <DataType>varchar(50)|0</DataType>
     </column>
-    <column id="13" parent="7" name="EXPERIENCE">
+    <column id="13" parent="7" name="createdDate">
       <Position>5</Position>
       <DataType>int(11)|0</DataType>
     </column>

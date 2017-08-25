@@ -9,12 +9,14 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import java.util.Date;
 import java.util.List;
 
 //это и MAIN и DAO, MAIN убираем!!!!!!!
 import java.util.List;
 @Repository
-public class DeveloperRunner implements DeveloperDAOHibernate {
+public class UserRunner implements UserDAOHibernate {
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -47,43 +49,40 @@ public class DeveloperRunner implements DeveloperDAOHibernate {
 
 
     @Override
-    public Integer addDeveloper(String firstName, String lastName, String specialty, int experience) {
+    public Integer addUser(String name, int age, boolean isAdmin, Date createdDate) {
         Session session = sessionFactory.openSession();
         Transaction transaction = null;
         Integer developerId = null;
 
         transaction = session.beginTransaction();
-        User developer = new User(firstName, lastName, specialty, experience);
+        User developer = new User(name, age, isAdmin, createdDate);
         developerId = (Integer) session.save(developer);
         transaction.commit();
         session.close();
         return developerId;
     }
-@Override
-    public void listDevelopers() {
+
+    @Override
+    public boolean findUser(String name) {
         Session session = sessionFactory.openSession();
-
-        Transaction transaction = null;
-
-        transaction = session.beginTransaction();
-        List<User> developers = session.createQuery("FROM User").list();
-        for (User developer : developers) {
-            System.out.println(developer);
-            System.out.println("\n================\n");
-        }
+        List<User> user = session.createQuery("FROM User").list();
         session.close();
+        return user.contains(name);
     }
 
-
-@Override
-    public void updateDeveloper(int developerId, int experience) {
+    @Override
+    public void updateUser(int id, String name, int age, boolean isAdmin, Date createdDate) {
         Session session = sessionFactory.openSession();
         Transaction transaction = null;
-
         transaction = session.beginTransaction();
-    User developer = (User) session.get(User.class, developerId);
-        developer.setExperience(experience);
-        session.update(developer);
+
+        User user = (User) session.get(User.class, id);
+        user.setName(name);
+        user.setAge(age);
+        user.setAdmin(isAdmin);
+        user.setCreatedDate(createdDate);
+
+        session.update(user);
         transaction.commit();
         session.close();
     }
@@ -91,28 +90,27 @@ public class DeveloperRunner implements DeveloperDAOHibernate {
 
 
     @Override
-    public void removeDeveloper(int developerId) {
+    public void removeUser(int developerId) {
         Session session = sessionFactory.openSession();
         Transaction transaction = null;
-
         transaction = session.beginTransaction();
-        User developer = (User) session.get(User.class, developerId);
-        session.delete(developer);
+        User user = (User) session.get(User.class, developerId);
+        session.delete(user);
         transaction.commit();
         session.close();
     }
 
-@Override
-    public List<User> listDevelopersReturn() {
-        List<User> developers;
-        //Session session = getCurrentSession();
-        Session session = sessionFactory.openSession();
-        Transaction transaction = null;
 
+    @Override
+    public List<User> listUserReturn() {
+        List<User> user;
+        //Session session = getCurrentSession();
+        Transaction transaction = null;
+        Session session = sessionFactory.openSession();
         transaction = session.beginTransaction();
-        developers = session.createQuery("FROM User").list();
+        user = session.createQuery("FROM User").list();
         session.close();
-        return developers;
+        return user;
 
     }
 }

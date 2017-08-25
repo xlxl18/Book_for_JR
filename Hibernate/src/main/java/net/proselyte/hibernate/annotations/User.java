@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Date;
 
 @Entity
 @Table(name="HIBERNATE_DEVELOPERS")
@@ -15,15 +16,14 @@ public class User {
     @Id @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column (name = "id")
     private int id;
-
-    @Column (name = "FIRST_NAME")
-    private String firstName;
-    @Column (name = "LAST_NAME")
-    private String lastName;
-    @Column (name = "SPECIALTY")
-    private String specialty;
-    @Column (name = "EXPERIENCE")
-    private int experience;
+    @Column (name = "NAME")
+    private String name;
+    @Column (name = "Age")
+    private int age;
+    @Column (name = "isAdmin")
+    private boolean isAdmin;
+    @Column (name = "createdDate")
+    private Date createdDate;
 
     /**
      * Default Constructor
@@ -34,11 +34,11 @@ public class User {
     /**
      * Plain constructor
      */
-    public User(String firstName, String lastName, String specialty, int experience) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.specialty = specialty;
-        this.experience = experience;
+    public User(String name, int age, boolean isAdmin, Date createdDate) {
+        this.name = name;
+        this.age = age;
+        this.isAdmin = isAdmin;
+        this.createdDate = createdDate;
     }
 
     /**
@@ -48,52 +48,50 @@ public class User {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+
+
+    public String getName() {
+        return name;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public int getAge() {
+        return age;
     }
 
-    public String getLastName() {
-        return lastName;
+    public void setAge(int age) {
+        this.age = age;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public boolean isAdmin() {
+        return isAdmin;
     }
 
-    public String getSpecialty() {
-        return specialty;
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
     }
 
-    public void setSpecialty(String specialty) {
-        this.specialty = specialty;
+    public Date getCreatedDate() {
+        return createdDate;
     }
 
-    public int getExperience() {
-        return experience;
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
     }
-
-    public void setExperience(int experience) {
-        this.experience = experience;
-    }
-
     /**
      * toString method (optional)
      */
     @Override
     public String toString() {
-        return "Developer:\n" +
-                "id: " + id +
-                "\nFirst Name: " + firstName + "\n" +
-                "Last Name: " + lastName + "\n" +
-                "Specialty: " + specialty + "\n" +
-                "Experience: " + experience + "\n";
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", isAdmin=" + isAdmin +
+                ", createdDate=" + createdDate +
+                '}';
     }
 }

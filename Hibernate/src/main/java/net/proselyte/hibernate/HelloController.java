@@ -1,7 +1,7 @@
 package net.proselyte.hibernate;
 
 import net.proselyte.hibernate.annotations.User;
-import net.proselyte.hibernate.servise.DeveloperService;
+import net.proselyte.hibernate.servise.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
@@ -18,7 +18,7 @@ import java.util.List;
 public class HelloController {
     @Autowired
     @Qualifier("devHibernateService")
-    private DeveloperService developerService;
+    private UserService userService;
 
     @RequestMapping(value="/", method = RequestMethod.GET)
     public String printWelcome0(ModelMap model) {
@@ -30,7 +30,7 @@ public class HelloController {
 
     @RequestMapping(value = "/viewusers", method = RequestMethod.GET)
     public String printHibernate(ModelMap model) {
-        List<User> listResults = developerService.listDevelopersReturn();
+        List<User> listResults = userService.listUserReturn();
         model.addAttribute("listResults", listResults);
         return "viewusers";
     }
