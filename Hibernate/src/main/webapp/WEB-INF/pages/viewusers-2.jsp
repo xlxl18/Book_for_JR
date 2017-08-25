@@ -11,7 +11,7 @@
 		<th>Id</th>
 		<th>Name</th>
 		<th>Age</th>
-		<th>Admin?</th>
+		<th>Is admin?</th>
 		<th>Created of Date</th>
 		<th>Edit</th>
 		<th>Delete</th>
@@ -19,7 +19,7 @@
 	<c:forEach items="${listResults}" var="listResults">
 		<tr><td>${listResults.id}</td>
 			<td>${listResults.firstName}</td>
-			<td>${listResults.lastName}</td>
+			<td>${listResults.age}</td>
 			<td>${listResults.specialty}</td>
 			<td>${listResults.experience}</td>
 			<td><a href="Tmp/editform.jsp?id=${u.getId()}">Edit</a></td>

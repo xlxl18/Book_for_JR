@@ -18,7 +18,7 @@ public class User {
     @Column (name = "NAME")
     private String firstName;
     @Column (name = "AGE")
-    private String lastName;
+    private int age;
     @Column (name = "isAdmin")
     private String specialty;
     @Column (name = "CREATEDDATE")
@@ -33,9 +33,9 @@ public class User {
     /**
      * Plain constructor
      */
-    public User(String firstName, String lastName, String specialty, int experience) {
+    public User(String firstName, int age, String specialty, int experience) {
         this.firstName = firstName;
-        this.lastName = lastName;
+        this.age = age;
         this.specialty = specialty;
         this.experience = experience;
     }
@@ -59,12 +59,12 @@ public class User {
         this.firstName = firstName;
     }
 
-    public String getLastName() {
-        return lastName;
+    public int getAge() {
+        return age;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setAge(int lastName) {
+        this.age = age;
     }
 
     public String getSpecialty() {
@@ -91,7 +91,7 @@ public class User {
         return "Developer:\n" +
                 "id: " + id +
                 "\nFirst Name: " + firstName + "\n" +
-                "Last Name: " + lastName + "\n" +
+                "Last Name: " + age + "\n" +
                 "Specialty: " + specialty + "\n" +
                 "Experience: " + experience + "\n";
     }

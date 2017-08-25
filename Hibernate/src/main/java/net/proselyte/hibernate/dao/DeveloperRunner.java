@@ -46,13 +46,13 @@ public class DeveloperRunner implements DeveloperDAOHibernate {
 
 
     @Override
-    public Integer addDeveloper(String firstName, String lastName, String specialty, int experience) {
+    public Integer addDeveloper(String firstName, int age, String specialty, int experience) {
         Session session = sessionFactory.openSession();
         Transaction transaction = null;
         Integer developerId = null;
 
         transaction = session.beginTransaction();
-        User developer = new User(firstName, lastName, specialty, experience);
+        User developer = new User(firstName, age, specialty, experience);
         developerId = (Integer) session.save(developer);
         transaction.commit();
         session.close();

@@ -17,8 +17,8 @@ public class DeveloperServiceImpl  implements  DeveloperService {
     private DeveloperDAOHibernate developerDAOHibernate;
 
     @Override
-    public Integer addDeveloper(String firstName, String lastName, String specialty, int experience) {
-        return developerDAOHibernate.addDeveloper(firstName, lastName, specialty, experience);
+    public Integer addDeveloper(String firstName, int age, String specialty, int experience) {
+        return developerDAOHibernate.addDeveloper(firstName, age, specialty, experience);
     }
 
     @Override
