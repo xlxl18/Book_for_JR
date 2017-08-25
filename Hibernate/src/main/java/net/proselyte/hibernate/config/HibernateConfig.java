@@ -1,8 +1,8 @@
 package net.proselyte.hibernate.config;
 
 
-
-import net.proselyte.hibernate.dao.UserRunner;
+import net.proselyte.hibernate.annotations.Developer;
+import net.proselyte.hibernate.dao.DeveloperRunner;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -35,8 +35,8 @@ public class HibernateConfig {
 
 
     @Bean
-    public UserRunner getNewDevHibernateDAO() {
-        return new UserRunner();
+    public DeveloperRunner getNewDevHibernateDAO() {
+        return new DeveloperRunner();
     }
 
 }

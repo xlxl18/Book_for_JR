@@ -1,8 +1,6 @@
 package net.proselyte.hibernate.servise.servlets;
 
-import net.proselyte.hibernate.annotations.User;
-import net.proselyte.hibernate.dao.UserDAOHibernate;
-import net.proselyte.hibernate.servise.UserService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
@@ -19,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class AddUser extends HttpServlet  {
-
+/*
     @Autowired
     @Qualifier("getNewDevHibernateDAO")
     private UserDAOHibernate userDAOHibernate;
@@ -67,4 +65,6 @@ public class AddUser extends HttpServlet  {
 
         }
     }
+
+    */
 }

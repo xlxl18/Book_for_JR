@@ -1,22 +1,19 @@
 package net.proselyte.hibernate.dao;
 
 
-
-import net.proselyte.hibernate.annotations.User;
+import net.proselyte.hibernate.annotations.Developer;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import java.util.Date;
 import java.util.List;
 
 //это и MAIN и DAO, MAIN убираем!!!!!!!
 import java.util.List;
 @Repository
-public class UserRunner implements UserDAOHibernate {
+public class DeveloperRunner implements DeveloperDAOHibernate {
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -49,40 +46,43 @@ public class UserRunner implements UserDAOHibernate {
 
 
     @Override
-    public Integer addUser(String name, int age, boolean isAdmin, Date createdDate) {
+    public Integer addDeveloper(String firstName, String lastName, String specialty, int experience) {
         Session session = sessionFactory.openSession();
         Transaction transaction = null;
         Integer developerId = null;
 
         transaction = session.beginTransaction();
-        User developer = new User(name, age, isAdmin, createdDate);
+        Developer developer = new Developer(firstName, lastName, specialty, experience);
         developerId = (Integer) session.save(developer);
         transaction.commit();
         session.close();
         return developerId;
     }
-
-    @Override
-    public boolean findUser(String name) {
+@Override
+    public void listDevelopers() {
         Session session = sessionFactory.openSession();
-        List<User> user = session.createQuery("FROM User").list();
+
+        Transaction transaction = null;
+
+        transaction = session.beginTransaction();
+        List<Developer> developers = session.createQuery("FROM Developer").list();
+        for (Developer developer : developers) {
+            System.out.println(developer);
+            System.out.println("\n================\n");
+        }
         session.close();
-        return user.contains(name);
     }
 
-    @Override
-    public void updateUser(int id, String name, int age, boolean isAdmin, Date createdDate) {
+
+@Override
+    public void updateDeveloper(int developerId, int experience) {
         Session session = sessionFactory.openSession();
         Transaction transaction = null;
+
         transaction = session.beginTransaction();
-
-        User user = (User) session.get(User.class, id);
-        user.setName(name);
-        user.setAge(age);
-        user.setAdmin(isAdmin);
-        user.setCreatedDate(createdDate);
-
-        session.update(user);
+        Developer developer = (Developer) session.get(Developer.class, developerId);
+        developer.setExperience(experience);
+        session.update(developer);
         transaction.commit();
         session.close();
     }
@@ -90,27 +90,28 @@ public class UserRunner implements UserDAOHibernate {
 
 
     @Override
-    public void removeUser(int developerId) {
+    public void removeDeveloper(int developerId) {
         Session session = sessionFactory.openSession();
         Transaction transaction = null;
+
         transaction = session.beginTransaction();
-        User user = (User) session.get(User.class, developerId);
-        session.delete(user);
+        Developer developer = (Developer) session.get(Developer.class, developerId);
+        session.delete(developer);
         transaction.commit();
         session.close();
     }
 
-
-    @Override
-    public List<User> listUserReturn() {
-        List<User> user;
+@Override
+    public List<Developer> listDevelopersReturn() {
+        List<Developer> developers;
         //Session session = getCurrentSession();
-        Transaction transaction = null;
         Session session = sessionFactory.openSession();
+        Transaction transaction = null;
+
         transaction = session.beginTransaction();
-        user = session.createQuery("FROM User").list();
+        developers = session.createQuery("FROM Developer").list();
         session.close();
-        return user;
+        return developers;
 
     }
 }
