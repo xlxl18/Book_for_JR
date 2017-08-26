@@ -9,7 +9,7 @@ public interface DeveloperDAOHibernate {
 
      Integer addDeveloper(String firstName, int age, String specialty, int experience);
      void removeDeveloper(int developerId);
-     void listDevelopers();
+     boolean findUser(String user);
      void updateDeveloper(int developerId, int experience);
      List<User> listDevelopersReturn();
 }

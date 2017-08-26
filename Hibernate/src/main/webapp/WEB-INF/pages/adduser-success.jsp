@@ -6,8 +6,8 @@
 </head>
 <body>
 
-<p>Sorry, an error occured!</p>
-<jsp:include page="../userform.html"></jsp:include>
+<p>Record successfully saved!</p>
+<jsp:include page="userform.html"></jsp:include>
 
 </body>
 </html>

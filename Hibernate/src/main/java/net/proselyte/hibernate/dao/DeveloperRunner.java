@@ -60,18 +60,13 @@ public class DeveloperRunner implements DeveloperDAOHibernate {
         return developerId;
     }
 @Override
-    public void listDevelopers() {
+    public boolean findUser(String user) {
         Session session = sessionFactory.openSession();
-
         Transaction transaction = null;
-
         transaction = session.beginTransaction();
         List<User> developers = session.createQuery("FROM User").list();
-        for (User developer : developers) {
-            System.out.println(developer);
-            System.out.println("\n================\n");
-        }
         session.close();
+        return user.contains(user);
     }
 
 

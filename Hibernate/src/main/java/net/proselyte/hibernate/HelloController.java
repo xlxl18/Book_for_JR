@@ -35,13 +35,30 @@ public class HelloController {
         return "viewusers-2";
     }
 
-    @RequestMapping(value = "/adduserform")
+    @RequestMapping(value = "/adduserform", method = RequestMethod.GET)
     public String printHibernate2(ModelMap model) {
         // model.addAttribute("listResults", 1);
-
         // ModelAndView mav = new ModelAndView("listResults") ;
         //   mav.addObject("listResults", listResults);
-        return "test";
+        return "test-2";
+    }
+
+    @RequestMapping(value = "/adduserform", method = RequestMethod.POST)
+    public String printHibernate9(ModelMap model) {
+
+
+
+        return "adduser-success";
+    }
+
+    @RequestMapping(value = "/successRegistration")
+    public String printHibernate7(ModelMap model) {
+      return "adduser-success";
+    }
+
+    @RequestMapping(value = "/adduser-error")
+    public String printHibernate8(ModelMap model) {
+        return "adduser-error";
     }
 
     @RequestMapping(value = "/getData", method = RequestMethod.GET)

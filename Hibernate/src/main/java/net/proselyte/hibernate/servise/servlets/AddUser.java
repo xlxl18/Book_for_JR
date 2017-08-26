@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class AddUser extends HttpServlet  {
-/*
+
     @Autowired
     @Qualifier("getNewDevHibernateDAO")
     private DeveloperDAOHibernate userDAOHibernate;
@@ -51,14 +51,15 @@ public class AddUser extends HttpServlet  {
             newUser.setDate(5);
 
             ctx.setAttribute("user", newUser);
-
             boolean res = userDAOHibernate.findUser(user);
+            userDAOHibernate.addDeveloper(user, age, isAdmin.toString(), 5);
 
             if (res) {
-                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/successRegistration.jsp");
+
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/successRegistration");
                 dispatcher.forward(request, response);
            } else {
-                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/adduser-error.jsp");
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/adduser-error");
                 dispatcher.forward(request, response);
             }
         } else if (request.getParameter("cancel")!=null){
@@ -68,5 +69,5 @@ public class AddUser extends HttpServlet  {
         }
     }
 
-    */
+
 }
