@@ -18,10 +18,10 @@
 	</tr>
 	<c:forEach items="${listResults}" var="listResults">
 		<tr><td>${listResults.id}</td>
-			<td>${listResults.firstName}</td>
+			<td>${listResults.name}</td>
 			<td>${listResults.age}</td>
-			<td>${listResults.specialty}</td>
-			<td>${listResults.experience}</td>
+			<td>${listResults.isAdmin}</td>
+			<td>${listResults.date}</td>
 			<td><a href="Tmp/editform.jsp?id=${u.getId()}">Edit</a></td>
 			<td><a href="Tmp/deleteuser.jsp?id=${u.getId()}">Delete</a></td>
 		</tr>

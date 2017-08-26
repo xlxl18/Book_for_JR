@@ -16,13 +16,13 @@ public class User {
     @Column (name = "id")
     private int id;
     @Column (name = "NAME")
-    private String firstName;
+    private String name;
     @Column (name = "AGE")
     private int age;
     @Column (name = "isAdmin")
-    private String specialty;
+    private String isAdmin;
     @Column (name = "CREATEDDATE")
-    private int experience;
+    private int date;
 
     /**
      * Default Constructor
@@ -33,11 +33,11 @@ public class User {
     /**
      * Plain constructor
      */
-    public User(String firstName, int age, String specialty, int experience) {
-        this.firstName = firstName;
+    public User(String name, int age, String isAdmin, int date) {
+        this.name = name;
         this.age = age;
-        this.specialty = specialty;
-        this.experience = experience;
+        this.isAdmin = isAdmin;
+        this.date = date;
     }
 
     /**
@@ -51,48 +51,48 @@ public class User {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getName() {
+        return name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getAge() {
         return age;
     }
 
-    public void setAge(int lastName) {
+    public void setAge(int age) {
         this.age = age;
     }
 
-    public String getSpecialty() {
-        return specialty;
+    public String getIsAdmin() {
+        return isAdmin;
     }
 
-    public void setSpecialty(String specialty) {
-        this.specialty = specialty;
+    public void setIsAdmin(String isAdmin) {
+        this.isAdmin = isAdmin;
     }
 
-    public int getExperience() {
-        return experience;
+    public int getDate() {
+        return date;
     }
 
-    public void setExperience(int experience) {
-        this.experience = experience;
+    public void setDate(int experience) {
+        this.date = date;
     }
-
     /**
      * toString method (optional)
      */
     @Override
     public String toString() {
-        return "Developer:\n" +
-                "id: " + id +
-                "\nFirst Name: " + firstName + "\n" +
-                "Last Name: " + age + "\n" +
-                "Specialty: " + specialty + "\n" +
-                "Experience: " + experience + "\n";
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", isAdmin='" + isAdmin + '\'' +
+                ", date=" + date +
+                '}';
     }
 }

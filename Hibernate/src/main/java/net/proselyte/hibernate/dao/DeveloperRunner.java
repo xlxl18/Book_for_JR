@@ -82,7 +82,7 @@ public class DeveloperRunner implements DeveloperDAOHibernate {
 
         transaction = session.beginTransaction();
     User developer = (User) session.get(User.class, developerId);
-        developer.setExperience(experience);
+       // developer.setExperience(experience);
         session.update(developer);
         transaction.commit();
         session.close();

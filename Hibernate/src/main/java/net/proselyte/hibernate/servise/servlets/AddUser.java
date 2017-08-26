@@ -1,6 +1,8 @@
 package net.proselyte.hibernate.servise.servlets;
 
 
+import net.proselyte.hibernate.annotations.User;
+import net.proselyte.hibernate.dao.DeveloperDAOHibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
@@ -20,7 +22,7 @@ public class AddUser extends HttpServlet  {
 /*
     @Autowired
     @Qualifier("getNewDevHibernateDAO")
-    private UserDAOHibernate userDAOHibernate;
+    private DeveloperDAOHibernate userDAOHibernate;
 
     public String getServletInfo(){
         return "Add user servlet";
@@ -28,13 +30,13 @@ public class AddUser extends HttpServlet  {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ServletContext ctx = getServletContext();
+
         if (request.getParameter("save")!=null){
             String user = request.getParameter("user");
             int age = Integer.parseInt(request.getParameter("age"));
-
              //String s = "1";  Boolean b = s.equals("1");
             Boolean isAdmin = request.getParameter("isAdmin").equals("1");
-            String createdDate = request.getParameter("date");
+            String createdDate = request.getParameter("timestamp");
             DateFormat format = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
             Date date = null;
             try {
@@ -45,8 +47,8 @@ public class AddUser extends HttpServlet  {
             User newUser = new User();
             newUser.setName(user);
             newUser.setAge(age);
-            newUser.setAdmin(isAdmin);
-            newUser.setCreatedDate(date);
+            newUser.setIsAdmin(isAdmin.toString());
+            newUser.setDate(5);
 
             ctx.setAttribute("user", newUser);
 
