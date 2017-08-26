@@ -26,7 +26,7 @@ public class DeveloperServiceImpl  implements  DeveloperService {
 
     @Override
     public void removeDeveloper(int developerId) {
-
+        developerDAOHibernate.removeDeveloper(developerId);
     }
 
     @Override

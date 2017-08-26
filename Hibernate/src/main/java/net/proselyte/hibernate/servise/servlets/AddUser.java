@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class AddUser extends HttpServlet  {
-
+/*
     @Autowired
     @Qualifier("getNewDevHibernateDAO")
     private DeveloperDAOHibernate userDAOHibernate;
@@ -68,6 +68,6 @@ public class AddUser extends HttpServlet  {
 
         }
     }
-
+*/
 
 }
