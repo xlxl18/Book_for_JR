@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -44,8 +46,9 @@ public class HelloController {
     }
 
     @RequestMapping(value = "/adduserform", method = RequestMethod.POST)
-    public String printHibernate9(ModelMap model) {
 
+    public String printHibernate9(@PathVariable User user) {
+        developerService.addDeveloper(user);
 
 
         return "adduser-success";

@@ -20,6 +20,9 @@ public class DeveloperServiceImpl  implements  DeveloperService {
     public Integer addDeveloper(String firstName, int age, String specialty, int experience) {
         return developerDAOHibernate.addDeveloper(firstName, age, specialty, experience);
     }
+    public Integer addDeveloper(User user){
+        return developerDAOHibernate.addDeveloper(user);
+    }
 
     @Override
     public void removeDeveloper(int developerId) {

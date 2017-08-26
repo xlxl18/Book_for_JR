@@ -26,7 +26,7 @@
         <tr><td>CREATED DATE:</td><td><input type="datetime-local" th:field="*{timestamp}" step="1"></tr></td>
 
 
-        <tr><td colspan="2"><input type="submit" name="save"  value="Save new user"/></td></tr>
+        <tr><td colspan="2"><input type="submit" name="save"  value="Save new user"/></td><td><input type="reset" value="Reset" /></td></tr>
     </table>
 </form>
 

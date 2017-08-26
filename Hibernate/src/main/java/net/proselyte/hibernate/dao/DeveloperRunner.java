@@ -59,7 +59,20 @@ public class DeveloperRunner implements DeveloperDAOHibernate {
         session.close();
         return developerId;
     }
-@Override
+
+    public Integer addDeveloper(User user) {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = null;
+        Integer developerId = null;
+
+        transaction = session.beginTransaction();
+        developerId = (Integer) session.save(user);
+        transaction.commit();
+        session.close();
+        return developerId;
+    }
+
+    @Override
     public boolean findUser(String user) {
         Session session = sessionFactory.openSession();
         Transaction transaction = null;
