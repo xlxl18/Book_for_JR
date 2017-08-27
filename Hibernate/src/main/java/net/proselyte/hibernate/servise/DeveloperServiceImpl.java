@@ -20,7 +20,8 @@ public class DeveloperServiceImpl  implements  DeveloperService {
     public Integer addDeveloper(String firstName, int age, String specialty, int experience) {
         return developerDAOHibernate.addDeveloper(firstName, age, specialty, experience);
     }
-    public Integer addDeveloper(User user){
+
+    public Integer addDeveloper(User user) {
         return developerDAOHibernate.addDeveloper(user);
     }
 
@@ -43,4 +44,10 @@ public class DeveloperServiceImpl  implements  DeveloperService {
     public List<User> listDevelopersReturn() {
         return developerDAOHibernate.listDevelopersReturn();
     }
+
+    @Override
+    public List<User> getAllUsers(String userName) {
+        return developerDAOHibernate.getAllUsers(userName);
+    }
+
 }

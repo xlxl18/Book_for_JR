@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<p>Record successfully saved!</p>
+<p>User successfully saved!</p>
 
 <a href="adduserform">Add User</a>
 <a href="viewusers">View Users</a>

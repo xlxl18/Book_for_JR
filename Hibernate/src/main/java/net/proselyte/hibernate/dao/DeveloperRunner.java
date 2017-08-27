@@ -8,6 +8,9 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 //это и MAIN и DAO, MAIN убираем!!!!!!!
@@ -123,6 +126,51 @@ public class DeveloperRunner implements DeveloperDAOHibernate {
         developers = session.createQuery("FROM User").list();
         session.close();
         return developers;
+    }
+    public List<User> getAllUsers(String user){
+        List<User> allUsers;
+        List<User> users = new ArrayList<User>();
+        //Session session = getCurrentSession();
+        Session session = sessionFactory.openSession();
+        Transaction transaction = null;
+
+        transaction = session.beginTransaction();
+        allUsers = session.createQuery("FROM User").list();
+        session.close();
+        for (User us: allUsers){
+            if (user.equals(us.getName())){
+                users.add(us);}
+        }
+
+        return users;
+    }
+    public List<User> getAllUsers2(String userName){
+        String query = "SELECT t.* FROM Test t WHERE t.name like '%"+ userName +"%'";
+        Session session = sessionFactory.openSession();
+        Transaction transaction = null;
+
+        transaction = session.beginTransaction();
+        //List<Object[]> userObjects = sessionFactory.getCurrentSession().createSQLQuery(query).list();
+        List<Object[]> userObjects = session.createQuery(query).list();
+        List<User> users = new ArrayList<User>();
+        for(Object[] userObject: userObjects) {
+            User user = new User();
+            int id = (int) userObject[0];
+            String name = (String) userObject[1];
+            int age = (int) userObject[2];
+            String isAdmin = (String) userObject[3];
+            int timestamp = (int) userObject[4];
+            user.setId(id);
+            user.setName(name);
+            user.setAge(age);
+            user.setIsAdmin(isAdmin);
+            user.setDate(timestamp);
+            users.add(user);
+        }
+        System.out.println(users);
+        return users;
 
     }
+
+
 }

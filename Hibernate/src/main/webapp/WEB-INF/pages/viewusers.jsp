@@ -4,7 +4,7 @@
 <jsp:useBean id="listResults" class="java.util.ArrayList" scope="request"/>
 
 
-<h1>     Users List    </h1>
+<h1>     All Users     </h1>
 
 <table border="1" width="90%">
 	<tr>
@@ -27,5 +27,15 @@
 		</tr>
 	</c:forEach>
 </table>
+
 <br/><a href="adduserform">Add New User</a>
+
+<form action="searchUser">
+	<div class="row">
+		<div class="col-md-2">Search users by name:</div>
+		<div class="col-md-2"><input type="text" name="searchName" id="searchName"
+									 placeholder="type name here.."></div>
+		<div class="col-md-2"><input class="btn btn-xs" type='submit' value='Search'/></div>
+	</div>
+</form>
 </body>
