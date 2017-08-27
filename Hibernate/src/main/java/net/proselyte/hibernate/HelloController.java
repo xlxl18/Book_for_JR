@@ -49,13 +49,11 @@ public class HelloController {
     @RequestMapping(value = "/adduserform", method = RequestMethod.POST)
     public ModelAndView testing2 (@ModelAttribute ("user") User user) {
 
-        System.out.println(user.getDate());
-        System.out.println(user.getId());
+
         System.out.println(user.getName());
         System.out.println(user.getAge());
-        if (user.getIsAdmin().isEmpty()){System.out.println("user.getIsAdmin() is Empty");}
         System.out.println(user.getIsAdmin());
-
+        System.out.println(user.getDate());
 
         return new ModelAndView("adduser-success");
     }
@@ -80,7 +78,7 @@ public class HelloController {
     @RequestMapping("deleteUser")
     public String deleteUser(@RequestParam int id, ModelMap model)
     {
-        System.out.println(id);
+
         developerService.removeDeveloper(id);
         List<User> listResults = developerService.listDevelopersReturn();
         model.addAttribute("listResults", listResults);

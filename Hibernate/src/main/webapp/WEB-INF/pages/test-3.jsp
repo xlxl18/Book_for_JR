@@ -10,41 +10,52 @@
 <h1>Add New User</h1>
 
 <form:form method="post" commandName="user" action="adduserform">
-    <table>
-        <tr>
-            <td>Name new User:</td>
-            <td><form:input path="name" /></td>
-        </tr>
-        <tr>
-            <td>Age new User:</td>
-            <td><form:input path="age" /></td>
-        </tr>
-        <tr>
-            <td>Are new User is Admin?</td>
-            <!--form:checkbox path="isAdmin" label="Would you like to join our mailinglist?" /-->
-           <td>
-               <form:radiobutton path="isAdmin" value="Try"/>Yes
-               <form:radiobutton path="isAdmin" value="Folse"/>No
-           </td>
-        </tr>
-        <tr>
-            <td>CREATED DATE:</td>
-            <td><form:input path="date" /></td>
-
-            <!--td><!--form:input path="date" type="datetime-local" step="1"/></td-->
-        </tr>
-        <tr>
-            <td colspan="2">
-                <input type="submit" name="save"  value="Save new user"/>
+ <table>
+     <tr>
+         <td>
+             Name new Date:
+         </td>
+         <td>
+             <form:input path="date" />
+         </td>
+     </tr>
+     <tr>
+            <td>
+                Name new User:
             </td>
             <td>
-                <input type="reset" value="Reset" />
+                <form:input path="name" />
             </td>
-        </tr>
-    </table>
+     </tr>
+     <tr>
+         <td>
+                Age new User:
+         </td>
+         <td>
+                <form:input path="age" />
+         </td>
+     </tr>
+     <tr>
+         <td>
+                Are new User is Admin?
+         </td>
+         <td>
+         <form:radiobutton path="isAdmin" value="true"/>
+         Yes
+         <form:radiobutton path="isAdmin" value="false"/>
+         No
+         </td>
+     </tr>
+     <tr>
+         <td colspan="2">
+                <input type="submit" name="save"  value="Save new user"/>
+         </td>
+         <td>
+                <input type="reset" value="Reset" />
+         </td>
+     </tr>
+ </table>
 </form:form>
-
-
-
 </body>
-</html>
+<!--td><!--form:input path="date" type="datetime-local" step="1"/></td-->
+<!--form:checkbox path="isAdmin" label="Would you like to join our mailinglist?" /-->

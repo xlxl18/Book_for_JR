@@ -79,7 +79,7 @@ public class User {
         return date;
     }
 
-    public void setDate(int experience) {
+    public void setDate(int date) {
         this.date = date;
     }
     /**
