@@ -11,7 +11,7 @@
 		<th>Id</th>
 		<th>Name</th>
 		<th>Age</th>
-		<th>Admin?</th>
+		<th>Is admin?</th>
 		<th>Created of Date</th>
 		<th>Edit</th>
 		<th>Delete</th>
@@ -21,9 +21,9 @@
 			<td>${listResults.name}</td>
 			<td>${listResults.age}</td>
 			<td>${listResults.isAdmin}</td>
-			<td>${listResults.createdDate}</td>
+			<td>${listResults.date}</td>
 			<td><a href="Tmp/editform.jsp?id=${u.getId()}">Edit</a></td>
-			<td><a href="Tmp/deleteuser.jsp?id=${u.getId()}">Delete</a></td>
+			<td><a href="deleteUser?id=<c:out value='${listResults.id}'/>">Delete</a></td>
 		</tr>
 	</c:forEach>
 </table>

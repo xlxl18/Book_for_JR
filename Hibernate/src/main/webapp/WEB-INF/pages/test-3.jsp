@@ -1,4 +1,5 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 
 
 <head>
@@ -11,19 +12,25 @@
 <form:form method="post" commandName="user" action="adduserform">
     <table>
         <tr>
-            <td><form:label path="name">Name new User:</form:label></td>
+            <td>Name new User:</td>
             <td><form:input path="name" /></td>
         </tr>
         <tr>
-            <td><form:label path="age">AGE</form:label></td>
+            <td>Age new User:</td>
             <td><form:input path="age" /></td>
         </tr>
         <tr>
-            <td><form:label path="isAdmin">Are you Admin?</form:label></td>
-           <!--td><!--form:input path="isAdmin" type="radio" value="1" />Yes</td-->
+            <td>Are new User is Admin?</td>
+            <!--form:checkbox path="isAdmin" label="Would you like to join our mailinglist?" /-->
+           <td>
+               <form:radiobutton path="isAdmin" value="Try"/>Yes
+               <form:radiobutton path="isAdmin" value="Folse"/>No
+           </td>
         </tr>
         <tr>
-            <td><form:label path="date">CREATED DATE:</form:label></td>
+            <td>CREATED DATE:</td>
+            <td><form:input path="date" /></td>
+
             <!--td><!--form:input path="date" type="datetime-local" step="1"/></td-->
         </tr>
         <tr>
