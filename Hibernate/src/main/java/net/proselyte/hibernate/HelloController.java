@@ -89,12 +89,7 @@ public class HelloController {
     public ModelAndView searchUser(@RequestParam("searchName") String searchName){
 
         List<User> userList = developerService.getAllUsers(searchName);
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("userList");//страничка jsp которую я вызываю
-        mv.addObject("userList", userList);
-       System.out.println(userList);
-        return mv;
-      //  return new ModelAndView("userList", "userList", usersList);
+        return new ModelAndView("userList", "userList", userList);
     }
 
     @RequestMapping(value = "/getData", method = RequestMethod.GET)

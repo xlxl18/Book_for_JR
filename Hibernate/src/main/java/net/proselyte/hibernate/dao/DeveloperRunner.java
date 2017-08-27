@@ -1,6 +1,7 @@
 package net.proselyte.hibernate.dao;
 
 
+import javassist.bytecode.stackmap.TypeData;
 import net.proselyte.hibernate.annotations.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -10,8 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 //это и MAIN и DAO, MAIN убираем!!!!!!!
 import java.util.List;
@@ -117,15 +117,16 @@ public class DeveloperRunner implements DeveloperDAOHibernate {
 
 @Override
     public List<User> listDevelopersReturn() {
-        List<User> developers;
+        List<User> users;
         //Session session = getCurrentSession();
         Session session = sessionFactory.openSession();
         Transaction transaction = null;
 
         transaction = session.beginTransaction();
-        developers = session.createQuery("FROM User").list();
+        users = session.createQuery("FROM User").list();
         session.close();
-        return developers;
+        Collections.sort(users);
+        return users;
     }
     public List<User> getAllUsers(String user){
         List<User> allUsers;
@@ -141,7 +142,7 @@ public class DeveloperRunner implements DeveloperDAOHibernate {
             if (user.equals(us.getName())){
                 users.add(us);}
         }
-
+        Collections.sort(users);
         return users;
     }
     public List<User> getAllUsers2(String userName){
