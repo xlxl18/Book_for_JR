@@ -7,7 +7,7 @@ import java.util.List;
 public interface DeveloperService {
 
     Integer addDeveloper(String firstName, int age, String specialty, int experience);
-    Integer addDeveloper(User user);
+    Integer updateDeveloper(User user);
     void removeDeveloper(int developerId);
     void listDevelopers();
     void updateDeveloper(int developerId, int experience);

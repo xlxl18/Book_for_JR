@@ -40,6 +40,7 @@ public class HelloController {
         //method 1
         ModelAndView mv = new ModelAndView();
         mv.addObject("message", "Add New User");
+        mv.addObject("message2", "adduserform");
         mv.setViewName("adduser");//страничка jsp которую я вызываю
         mv.addObject("user", new User());
         return mv;
@@ -64,6 +65,7 @@ public class HelloController {
         ModelAndView mv = new ModelAndView();
         user = developerService.getUser(id);
         mv.addObject("message", "Edit User");
+        mv.addObject("message2", "editUser");
         mv.setViewName("adduser");//страничка jsp которую я вызываю
         mv.addObject( "userDate", user);
         return mv;
@@ -71,7 +73,7 @@ public class HelloController {
 
     @RequestMapping(value = "/editUser", method = RequestMethod.POST)
     public ModelAndView testing4 (@ModelAttribute ("user") User user) {
-        developerService.addDeveloper(user);
+        developerService.updateDeveloper(user);
         return new ModelAndView("adduser-success");
     }
 

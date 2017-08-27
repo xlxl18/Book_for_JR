@@ -21,8 +21,8 @@ public class DeveloperServiceImpl  implements  DeveloperService {
         return developerDAOHibernate.addDeveloper(firstName, age, specialty, experience);
     }
 
-    public Integer addDeveloper(User user) {
-        return developerDAOHibernate.addDeveloper(user);
+    public Integer updateDeveloper(User user) {
+        return developerDAOHibernate.updateDeveloper(user);
     }
 
     @Override

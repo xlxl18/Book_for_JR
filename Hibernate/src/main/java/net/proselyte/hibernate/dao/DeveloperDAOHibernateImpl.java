@@ -11,7 +11,7 @@ import java.util.*;
 import java.util.List;
 
 @Repository
-public class DeveloperRunner implements DeveloperDAOHibernate {
+public class DeveloperDAOHibernateImpl implements DeveloperDAOHibernate {
     @Autowired
     private SessionFactory sessionFactory;
     private Session getCurrentSession() {
@@ -33,21 +33,24 @@ public class DeveloperRunner implements DeveloperDAOHibernate {
         return developerId;
     }
     @Override
-    public Integer addDeveloper(User user) {
+    public Integer updateDeveloper(User user) {
         System.out.println("Попытка добавления пользователя в базу = " + user.getName());
-        Session session = sessionFactory.getCurrentSession();
+        Session session = sessionFactory.openSession();
         Transaction transaction = null;
         Integer developerId = null;
         transaction = session.beginTransaction();
         session.update(user);
+        //session.save(user);
+
 /*
         if(user.getId() == 0){ // if user id is 0 then creating user other updating user
             session.save(user);
         } else {
-            session.update(user);
+            session.delete(user);
+            session.save(user);
         }
-*/
 
+*/
         transaction.commit();
         session.close();
         return developerId;
