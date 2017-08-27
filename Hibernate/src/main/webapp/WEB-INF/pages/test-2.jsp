@@ -1,14 +1,6 @@
-<%@ page import="java.util.Date" %>
-<%@ page import="java.util.Calendar" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="th" uri="http://java.sun.com/jsf/html" %>
 
+<html xmlns:th="http://www.thymeleaf.org">
 
-<%Calendar c= Calendar.getInstance();
-    Date today = c.getTime();
-    //Date dateFromDb = yourDateFromDatabase;
-%>
 
 <head>
     <title>Getting Started: Handling Form Submission</title>
@@ -18,7 +10,7 @@
 <a href="viewusers">View All Records</a><br/>
 <h1>Add New User</h1>
 
-<form action="#" th:action="@{/adduserform}" th:object="${user}" method="post">
+    <form action="#" th:action="@{/user}" th:value="${user}" method="post">
     <table>
         <tr><td>Name new User:</td><td><input type="text" th:field="*{name}" /></td></tr>
         <tr><td>AGE:</td><td><input type="number" th:field="*{age}"/></td></tr>
@@ -30,4 +22,13 @@
     </table>
 </form>
 
+<%
+   String outParameter2 = request.getMethod();
+    String outParameter1 = (String) request.getAttribute("user");
+
+    out.println(outParameter1);
+    out.println(outParameter2);
+    %>
+
 </body>
+</html>

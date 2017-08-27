@@ -22,8 +22,8 @@ public class HelloController {
 
     @RequestMapping(value="/", method = RequestMethod.GET)
     public String printWelcome0(ModelMap model) {
-        model.addAttribute("message", "Hello, Andrey!");
-        model.addAttribute("message2", "I love you!");
+        model.addAttribute("message", "Hello, javaRash!");
+        model.addAttribute("message2", "Make your choice, please.");
         return "index";
     }
 
@@ -36,21 +36,28 @@ public class HelloController {
     }
 
     @RequestMapping(value = "/adduserform", method = RequestMethod.GET)
-    public String printHibernate2(ModelMap model) {
-        // model.addAttribute("listResults", 1);
-        // ModelAndView mav = new ModelAndView("listResults") ;
-        //   mav.addObject("listResults", listResults);
-        return "test-2";
+    public ModelAndView testing() {
+        //method 1
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("test-3");//страничка jsp которую я вызываю
+        mv.addObject("user", new User());
+        return mv;
+        //method 2
+        // return new ModelAndView("test-4", "user", new User());
     }
 
     @RequestMapping(value = "/adduserform", method = RequestMethod.POST)
-    public String printHibernate9(@ModelAttribute User user) {
+    public ModelAndView testing2 (@ModelAttribute ("user") User user) {
         System.out.println(user.getName());
-       // developerService.addDeveloper(user);
-
-
-        return "adduser-success";
+        return new ModelAndView("adduser-success");
     }
+
+
+
+
+
+    // *********************************************************************************
+
 
     @RequestMapping(value = "/successRegistration")
     public String printHibernate7(ModelMap model) {
