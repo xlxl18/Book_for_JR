@@ -39,7 +39,8 @@ public class HelloController {
     public ModelAndView testing() {
         //method 1
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("test-3");//страничка jsp которую я вызываю
+        mv.addObject("message", "Add New User");
+        mv.setViewName("adduser");//страничка jsp которую я вызываю
         mv.addObject("user", new User());
         return mv;
         //method 2
@@ -59,26 +60,18 @@ public class HelloController {
     }
 
     @RequestMapping(value = "/editUser", method = RequestMethod.GET)
-    public ModelAndView testing3() {
-        //method 1
+    public ModelAndView editUser(@RequestParam int id, @ModelAttribute User user) {
         ModelAndView mv = new ModelAndView();
+        user = developerService.getUser(id);
+        mv.addObject("message", "Edit User");
         mv.setViewName("adduser");//страничка jsp которую я вызываю
-        mv.addObject("user", new User());
+        mv.addObject( "userDate", user);
         return mv;
-        //method 2
-        // return new ModelAndView("test-4", "user", new User());
     }
 
     @RequestMapping(value = "/editUser", method = RequestMethod.POST)
     public ModelAndView testing4 (@ModelAttribute ("user") User user) {
-
-        developerService.addDeveloper(user.getName(), user.getAge(), user.getIsAdmin(), user.getDate());
-
-        System.out.println(user.getName());
-        System.out.println(user.getAge());
-        System.out.println(user.getIsAdmin());
-        System.out.println(user.getDate());
-
+        developerService.addDeveloper(user);
         return new ModelAndView("adduser-success");
     }
 

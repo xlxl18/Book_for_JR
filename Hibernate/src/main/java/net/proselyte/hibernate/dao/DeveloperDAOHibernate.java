@@ -14,4 +14,5 @@ public interface DeveloperDAOHibernate {
      void updateDeveloper(int developerId, int experience);
      List<User> listDevelopersReturn();
      List<User> getAllUsers(String userName);
+     public User getUser(int id);
 }

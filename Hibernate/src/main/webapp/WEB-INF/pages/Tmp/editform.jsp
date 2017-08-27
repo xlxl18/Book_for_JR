@@ -13,7 +13,7 @@ User u=UserDao.getRecordById(Integer.parseInt(id));
 %>
 
 <h1>Edit Form</h1>
-<form action="edituser.jsp" method="post">
+<form action="edituser1.jsp" method="post">
 <input type="hidden" name="id" value="<%=u.getId() %>"/>
 <table>
 <tr><td>Name:</td><td><input type="text" name="name" value="<%= u.getName()%>"/></td></tr>

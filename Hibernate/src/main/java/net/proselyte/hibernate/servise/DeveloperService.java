@@ -11,6 +11,8 @@ public interface DeveloperService {
     void removeDeveloper(int developerId);
     void listDevelopers();
     void updateDeveloper(int developerId, int experience);
+    User getUser(int id);
     List<User> listDevelopersReturn();
     List<User> getAllUsers(String userName);
+
 }

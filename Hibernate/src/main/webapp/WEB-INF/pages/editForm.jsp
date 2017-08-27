@@ -8,17 +8,17 @@
 </head>
 <body>
 <a href="viewusers">View All Records</a><br/>
-<h1>${message}</h1>
+<h1>Edit User</h1>
 
-<form:form method="post" commandName="user" action="adduserform">
+<form:form method="post" commandName="user" action="editUser">
  <table>
      <tr>
             <td>
                 Name new User:
             </td>
             <td>
-                <form:hidden path="id" value="${userDate.id}"/>
-                <form:input path="name" value="${userDate.name}"/>
+                <form:hidden path="id" value="${userObject.id}"/>
+                <form:input path="name" />
             </td>
      </tr>
      <tr>
@@ -26,7 +26,7 @@
                 Age new User:
          </td>
          <td>
-                <form:input path="age" value="${userDate.age}"/>
+                <form:input path="age" />
          </td>
      </tr>
      <tr>
@@ -46,9 +46,9 @@
          </td>
          <td>
 
-             <form:input path="date" value="${userDate.date}" />
+             <form:input path="date"/>
 
-
+             <!--form:input path="date"  /-->
          </td>
      </tr>
      <tr>

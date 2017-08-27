@@ -49,5 +49,8 @@ public class DeveloperServiceImpl  implements  DeveloperService {
     public List<User> getAllUsers(String userName) {
         return developerDAOHibernate.getAllUsers(userName);
     }
+    public User getUser(int id){
+        return developerDAOHibernate.getUser(id);
+    }
 
 }
