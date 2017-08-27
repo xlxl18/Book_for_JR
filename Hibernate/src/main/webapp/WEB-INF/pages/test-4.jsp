@@ -10,59 +10,59 @@
 <a href="viewusers">View All Records</a><br/>
 <h1>Add New User</h1>
 
-<form:form method="post" commandName="user" action="adduserform">
- <table>
-     <tr>
+<form method="post" commandName="user" action="adduserform">
+    <table>
+        <tr>
             <td>
                 Name new User:
             </td>
             <td>
                 <form:input path="name" />
             </td>
-     </tr>
-     <tr>
-         <td>
+        </tr>
+        <tr>
+            <td>
                 Age new User:
-         </td>
-         <td>
+            </td>
+            <td>
                 <form:input path="age" />
-         </td>
-     </tr>
-     <tr>
-         <td>
+            </td>
+        </tr>
+        <tr>
+            <td>
                 Are new User is Admin?
-         </td>
-         <td>
-         <form:radiobutton path="isAdmin" value="true"/>
-         Yes
-         <form:radiobutton path="isAdmin" value="false"/>
-         No
-         </td>
-     </tr>
-     <tr>
-         <td>
-              new Date:
-         </td>
-         <td>
+            </td>
+            <td>
+                <form:radiobutton path="isAdmin" value="true"/>
+                Yes
+                <form:radiobutton path="isAdmin" value="false"/>
+                No
+            </td>
+        </tr>
+        <tr>
+            <td>
+                new Date:
+            </td>
+            <td>
 
-             <form:input path="date"/>
+                <form:input path="date" onselect="d"/>
 
-             <!--form:input path="date"  /-->
-         </td>
-     </tr>
-     <tr>
-         <td colspan="2">
+                <!--form:input path="date"  /-->
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
                 <input type="submit" name="save"  value="Save new user"/>
-         </td>
-         <td>
+            </td>
+            <td>
                 <input type="reset" value="Reset" />
-         </td>
-     </tr>
- </table>
-</form:form>
+            </td>
+        </tr>
+    </table>
+</form>
 
 <html>
-<!--fmt:formatDate var="fmtDate" value="${form.bean.dateProperty}" pattern="dd/MM/yyyy"/-->
+<fmt:formatDate var="fmtDate" value="${form.bean.dateProperty}" pattern="dd/MM/yyyy"/>
 
 </html>
 

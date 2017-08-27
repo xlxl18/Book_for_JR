@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface DeveloperDAOHibernate {
 
-     Integer addDeveloper(String firstName, int age, String specialty, int experience);
+     Integer addDeveloper(String user, int age, String isAdmin, int date);
      Integer addDeveloper(User user);
      void removeDeveloper(int developerId);
      boolean findUser(String user);

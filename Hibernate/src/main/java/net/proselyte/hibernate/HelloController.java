@@ -14,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 @Controller
-//@RequestMapping("/")
+@SessionAttributes("user")
 public class HelloController {
     @Autowired
     @Qualifier("devHibernateService")
@@ -48,7 +48,7 @@ public class HelloController {
 
     @RequestMapping(value = "/adduserform", method = RequestMethod.POST)
     public ModelAndView testing2 (@ModelAttribute ("user") User user) {
-        // developerService.addDeveloper(user);
+         developerService.addDeveloper(user.getName(), user.getAge(), user.getIsAdmin(), user.getDate());
 
         System.out.println(user.getName());
         System.out.println(user.getAge());
