@@ -48,7 +48,7 @@ public class HelloController {
 
     @RequestMapping(value = "/adduserform", method = RequestMethod.POST)
     public ModelAndView testing2 (@ModelAttribute ("user") User user) {
-
+        // developerService.addDeveloper(user);
 
         System.out.println(user.getName());
         System.out.println(user.getAge());
@@ -82,7 +82,7 @@ public class HelloController {
         developerService.removeDeveloper(id);
         List<User> listResults = developerService.listDevelopersReturn();
         model.addAttribute("listResults", listResults);
-        return "viewusers-2";
+        return "viewusers";
     }
 
     @RequestMapping(value = "/getData", method = RequestMethod.GET)

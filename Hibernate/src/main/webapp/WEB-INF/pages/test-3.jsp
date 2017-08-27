@@ -12,14 +12,6 @@
 <form:form method="post" commandName="user" action="adduserform">
  <table>
      <tr>
-         <td>
-             Name new Date:
-         </td>
-         <td>
-             <form:input path="date" />
-         </td>
-     </tr>
-     <tr>
             <td>
                 Name new User:
             </td>
@@ -44,6 +36,14 @@
          Yes
          <form:radiobutton path="isAdmin" value="false"/>
          No
+         </td>
+     </tr>
+     <tr>
+         <td>
+             Name new Date:
+         </td>
+         <td>
+             <form:input path="date" />
          </td>
      </tr>
      <tr>

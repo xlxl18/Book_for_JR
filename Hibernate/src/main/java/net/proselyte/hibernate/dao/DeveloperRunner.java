@@ -61,6 +61,7 @@ public class DeveloperRunner implements DeveloperDAOHibernate {
     }
 
     public Integer addDeveloper(User user) {
+        System.out.println("Попытка добавления пользователя в базу = " + user.getName());
         Session session = sessionFactory.openSession();
         Transaction transaction = null;
         Integer developerId = null;
