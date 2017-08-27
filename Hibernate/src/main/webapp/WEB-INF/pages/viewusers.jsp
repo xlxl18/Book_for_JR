@@ -22,7 +22,7 @@
 			<td>${listResults.age}</td>
 			<td>${listResults.isAdmin}</td>
 			<td>${listResults.date}</td>
-			<td><a href="Tmp/editform.jsp?id=${u.getId()}">Edit</a></td>
+			<td><a href="editUser?id=<c:out value='${listResults.id}'/>">Edit</a></td>
 			<td><a href="deleteUser?id=<c:out value='${listResults.id}'/>">Delete</a></td>
 		</tr>
 	</c:forEach>

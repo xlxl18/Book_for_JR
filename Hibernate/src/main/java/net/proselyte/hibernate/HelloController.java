@@ -58,6 +58,30 @@ public class HelloController {
         return new ModelAndView("adduser-success");
     }
 
+    @RequestMapping(value = "/editUser", method = RequestMethod.GET)
+    public ModelAndView testing3() {
+        //method 1
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("adduser");//страничка jsp которую я вызываю
+        mv.addObject("user", new User());
+        return mv;
+        //method 2
+        // return new ModelAndView("test-4", "user", new User());
+    }
+
+    @RequestMapping(value = "/editUser", method = RequestMethod.POST)
+    public ModelAndView testing4 (@ModelAttribute ("user") User user) {
+
+        developerService.addDeveloper(user.getName(), user.getAge(), user.getIsAdmin(), user.getDate());
+
+        System.out.println(user.getName());
+        System.out.println(user.getAge());
+        System.out.println(user.getIsAdmin());
+        System.out.println(user.getDate());
+
+        return new ModelAndView("adduser-success");
+    }
+
 
 
 
