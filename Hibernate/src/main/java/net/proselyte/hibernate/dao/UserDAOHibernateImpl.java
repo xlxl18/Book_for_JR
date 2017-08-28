@@ -19,7 +19,7 @@ public class UserDAOHibernateImpl implements UserDAOHibernate {
     }
 
     @Override
-    public Integer addDeveloper(String user, int age, String specialty, int experience) {
+    public Integer addUser(String user, int age, String specialty, int experience) {
         System.out.println("Попытка добавления пользователя в базу = " + user);
         Session session = sessionFactory.openSession();
         Transaction transaction = null;
@@ -33,7 +33,7 @@ public class UserDAOHibernateImpl implements UserDAOHibernate {
         return developerId;
     }
     @Override
-    public Integer updateDeveloper(User user) {
+    public Integer updateUser(User user) {
         System.out.println("Попытка добавления пользователя в базу = " + user.getName());
         Session session = sessionFactory.openSession();
         Transaction transaction = null;
@@ -56,7 +56,7 @@ public class UserDAOHibernateImpl implements UserDAOHibernate {
         return developerId;
     }
     @Override
-    public void removeDeveloper(int developerId) {
+    public void removeUser(int developerId) {
         Session session = sessionFactory.openSession();
         Transaction transaction = null;
 
@@ -67,7 +67,7 @@ public class UserDAOHibernateImpl implements UserDAOHibernate {
         session.close();
     }
     @Override
-    public List<User> listDevelopersReturn() {
+    public List<User> listUsersReturn() {
         List<User> users;
         //Session session = getCurrentSession();
         Session session = sessionFactory.openSession();

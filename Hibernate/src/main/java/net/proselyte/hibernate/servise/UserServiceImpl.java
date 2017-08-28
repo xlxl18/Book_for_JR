@@ -16,22 +16,22 @@ public class UserServiceImpl  implements  UserService {
     private UserDAOHibernate userDAOHibernate;
 
     @Override
-    public Integer addDeveloper(String firstName, int age, String specialty, int experience) {
-        return userDAOHibernate.addDeveloper(firstName, age, specialty, experience);
+    public Integer addUser(String firstName, int age, String specialty, int experience) {
+        return userDAOHibernate.addUser(firstName, age, specialty, experience);
     }
 
-    public Integer updateDeveloper(User user) {
-        return userDAOHibernate.updateDeveloper(user);
-    }
-
-    @Override
-    public void removeDeveloper(int developerId) {
-        userDAOHibernate.removeDeveloper(developerId);
+    public Integer updateUser(User user) {
+        return userDAOHibernate.updateUser(user);
     }
 
     @Override
-    public List<User> listDevelopersReturn() {
-        return userDAOHibernate.listDevelopersReturn();
+    public void removeUser(int developerId) {
+        userDAOHibernate.removeUser(developerId);
+    }
+
+    @Override
+    public List<User> listUsersReturn() {
+        return userDAOHibernate.listUsersReturn();
     }
 
     @Override

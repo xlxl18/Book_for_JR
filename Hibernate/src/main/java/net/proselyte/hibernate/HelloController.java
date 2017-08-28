@@ -30,7 +30,7 @@ public class HelloController {
 
     @RequestMapping(value = "/viewusers", method = RequestMethod.GET)
     public String printHibernate(ModelMap model) {
-        List<User> listResults = developerService.listDevelopersReturn();
+        List<User> listResults = developerService.listUsersReturn();
         model.addAttribute("listResults", listResults);
         return "viewusers";
     }
@@ -50,7 +50,7 @@ public class HelloController {
 
     @RequestMapping(value = "/adduserform", method = RequestMethod.POST)
     public ModelAndView testing2 (@ModelAttribute ("user") User user, ModelMap model) {
-         developerService.addDeveloper(user.getName(), user.getAge(), user.getIsAdmin(), user.getDate());
+         developerService.addUser(user.getName(), user.getAge(), user.getIsAdmin(), user.getDate());
         model.addAttribute("message", "User successfully saved!");
         model.addAttribute("message2", "Make your choice, please.");
         return new ModelAndView("index");
@@ -69,7 +69,7 @@ public class HelloController {
 
     @RequestMapping(value = "/editUser", method = RequestMethod.POST)
     public ModelAndView testing4 (@ModelAttribute ("user") User user, ModelMap model) {
-        developerService.updateDeveloper(user);
+        developerService.updateUser(user);
         model.addAttribute("message", "User successfully saved!");
         model.addAttribute("message2", "Make your choice, please.");
         return new ModelAndView("index");
@@ -96,8 +96,8 @@ public class HelloController {
     public String deleteUser(@RequestParam int id, ModelMap model)
     {
 
-        developerService.removeDeveloper(id);
-        List<User> listResults = developerService.listDevelopersReturn();
+        developerService.removeUser(id);
+        List<User> listResults = developerService.listUsersReturn();
         model.addAttribute("listResults", listResults);
         return "viewusers";
     }
