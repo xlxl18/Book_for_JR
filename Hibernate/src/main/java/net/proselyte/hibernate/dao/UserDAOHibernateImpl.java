@@ -19,14 +19,14 @@ public class UserDAOHibernateImpl implements UserDAOHibernate {
     }
 
     @Override
-    public Integer addUser(String user, int age, String specialty, int experience) {
+    public Integer addUser(String user, int age, String isAdmin, int date) {
         System.out.println("Попытка добавления пользователя в базу = " + user);
         Session session = sessionFactory.openSession();
         Transaction transaction = null;
         Integer developerId = null;
 
         transaction = session.beginTransaction();
-        User developer = new User(user, age, specialty, experience);
+        User developer = new User(user, age, isAdmin, date);
         developerId = (Integer) session.save(developer);
         transaction.commit();
         session.close();
@@ -56,12 +56,12 @@ public class UserDAOHibernateImpl implements UserDAOHibernate {
         return developerId;
     }
     @Override
-    public void removeUser(int developerId) {
+    public void removeUser(int id) {
         Session session = sessionFactory.openSession();
         Transaction transaction = null;
 
         transaction = session.beginTransaction();
-        User developer = (User) session.get(User.class, developerId);
+        User developer = (User) session.get(User.class, id);
         session.delete(developer);
         transaction.commit();
         session.close();
@@ -80,7 +80,7 @@ public class UserDAOHibernateImpl implements UserDAOHibernate {
         return users;
     }
     @Override
-    public List<User> getAllUsers(String user){
+    public List<User> getAllUsers(String nameOfUser){
         List<User> allUsers;
         List<User> users = new ArrayList<User>();
         //Session session = getCurrentSession();
@@ -91,7 +91,7 @@ public class UserDAOHibernateImpl implements UserDAOHibernate {
         allUsers = session.createQuery("FROM User").list();
         session.close();
         for (User us: allUsers){
-            if (user.equals(us.getName())){
+            if (nameOfUser.equals(us.getName())){
                 users.add(us);}
         }
         Collections.sort(users);

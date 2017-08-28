@@ -7,10 +7,10 @@ import java.util.List;
 
 public interface UserDAOHibernate {
 
-     Integer addUser(String user, int age, String isAdmin, int date);
+     Integer addUser(String name, int age, String isAdmin, int date);
      Integer updateUser(User user);
      void removeUser(int developerId);
      List<User> listUsersReturn();
-     List<User> getAllUsers(String userName);
+     List<User> getAllUsers(String nameOfUser);
      User getUser(int id);
 }
