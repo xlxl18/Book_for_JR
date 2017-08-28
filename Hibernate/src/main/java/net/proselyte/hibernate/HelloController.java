@@ -10,11 +10,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
 import java.util.List;
 
 @Controller
-@SessionAttributes("user")
+//@SessionAttributes("user")
 public class HelloController {
     @Autowired
     @Qualifier("devHibernateService")
@@ -26,7 +25,6 @@ public class HelloController {
         model.addAttribute("message2", "Make your choice, please.");
         return "index";
     }
-
 
     @RequestMapping(value = "/viewusers", method = RequestMethod.GET)
     public String printHibernate(ModelMap model) {
@@ -75,28 +73,9 @@ public class HelloController {
         return new ModelAndView("index");
     }
 
-
-
-
-
-    // *********************************************************************************
-
-
-    @RequestMapping(value = "/successRegistration")
-    public String printHibernate7(ModelMap model) {
-      return "adduser-success";
-    }
-
-    @RequestMapping(value = "/adduser-error")
-    public String printHibernate8(ModelMap model) {
-        return "adduser-error";
-    }
-
     @RequestMapping("deleteUser")
     public String deleteUser(@RequestParam int id, ModelMap model)
-    {
-
-        userService.removeUser(id);
+    {   userService.removeUser(id);
         List<User> listResults = userService.listUsersReturn();
         model.addAttribute("listResults", listResults);
         return "viewusers";
@@ -104,7 +83,6 @@ public class HelloController {
 
     @RequestMapping("searchUser")
     public ModelAndView searchUser(@RequestParam("searchName") String searchName){
-
         List<User> userList = userService.getAllUsers(searchName);
         return new ModelAndView("userList", "userList", userList);
     }
@@ -113,36 +91,5 @@ public class HelloController {
     public ResponseEntity<String> getData() {
         return new ResponseEntity<String>("TEST!", HttpStatus.OK);
     }
-/*
-	@RequestMapping(value="/1", method = RequestMethod.GET)
-	public String printWelcome(ModelMap model) {
-		model.addAttribute("message", "Hello world! - index.jsp");
-		return "index";
-	}
-
-    @RequestMapping(value="/2", method = RequestMethod.GET)
-    public String printWelcome2(ModelMap model) {
-        model.addAttribute("message", "Hello world! - 2");
-        return "hello2";
-    }
-
-
-    @RequestMapping(value="/3", method = RequestMethod.GET)
-    public String printWelcome3(ModelMap model) {
-
-        model.addAttribute("message", "Hello world! - 3");
-        model.addAttribute("message", "Hello world! - 3");
-
-      //  DeveloperRunner.listDevelopersReturn();
-        return "hello3";
-    }
-
-    @RequestMapping(value="/4", method = RequestMethod.GET)
-    public String printWelcome4(ModelMap model) {
-
-        return "index1";
-    }
-*/
-
 
 }

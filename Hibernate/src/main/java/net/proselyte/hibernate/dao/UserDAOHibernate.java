@@ -9,7 +9,7 @@ public interface UserDAOHibernate {
 
      Integer addUser(String name, int age, String isAdmin, int date);
      Integer updateUser(User user);
-     void removeUser(int developerId);
+     void removeUser(int id);
      List<User> listUsersReturn();
      List<User> getAllUsers(String nameOfUser);
      User getUser(int id);

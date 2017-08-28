@@ -17,11 +17,14 @@ public class UserDAOHibernateImpl implements UserDAOHibernate {
     private Session getCurrentSession() {
         return this.sessionFactory.getCurrentSession();
     }
+    public SessionFactory getSessionFactory() {
+        return sessionFactory;
+    }
 
     @Override
     public Integer addUser(String user, int age, String isAdmin, int date) {
         System.out.println("Попытка добавления пользователя в базу = " + user);
-        Session session = sessionFactory.openSession();
+        Session session = getSessionFactory().openSession();
         Transaction transaction = null;
         Integer developerId = null;
 
@@ -35,7 +38,7 @@ public class UserDAOHibernateImpl implements UserDAOHibernate {
     @Override
     public Integer updateUser(User user) {
         System.out.println("Попытка добавления пользователя в базу = " + user.getName());
-        Session session = sessionFactory.openSession();
+        Session session = getSessionFactory().openSession();
         Transaction transaction = null;
         Integer developerId = null;
         transaction = session.beginTransaction();
@@ -57,7 +60,7 @@ public class UserDAOHibernateImpl implements UserDAOHibernate {
     }
     @Override
     public void removeUser(int id) {
-        Session session = sessionFactory.openSession();
+        Session session = getSessionFactory().openSession();
         Transaction transaction = null;
 
         transaction = session.beginTransaction();
@@ -70,7 +73,7 @@ public class UserDAOHibernateImpl implements UserDAOHibernate {
     public List<User> listUsersReturn() {
         List<User> users;
         //Session session = getCurrentSession();
-        Session session = sessionFactory.openSession();
+        Session session = getSessionFactory().openSession();
         Transaction transaction = null;
 
         transaction = session.beginTransaction();
@@ -84,7 +87,7 @@ public class UserDAOHibernateImpl implements UserDAOHibernate {
         List<User> allUsers;
         List<User> users = new ArrayList<User>();
         //Session session = getCurrentSession();
-        Session session = sessionFactory.openSession();
+        Session session = getSessionFactory().openSession();
         Transaction transaction = null;
 
         transaction = session.beginTransaction();
@@ -102,7 +105,7 @@ public class UserDAOHibernateImpl implements UserDAOHibernate {
         List<User> allUsers;
         User users = null;
         //Session session = getCurrentSession();
-        Session session = sessionFactory.openSession();
+        Session session = getSessionFactory().openSession();
         Transaction transaction = null;
 
         transaction = session.beginTransaction();
