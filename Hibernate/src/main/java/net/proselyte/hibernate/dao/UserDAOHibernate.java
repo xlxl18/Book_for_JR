@@ -5,7 +5,7 @@ import net.proselyte.hibernate.annotations.User;
 
 import java.util.List;
 
-public interface DeveloperDAOHibernate {
+public interface UserDAOHibernate {
 
      Integer addDeveloper(String user, int age, String isAdmin, int date);
      Integer updateDeveloper(User user);

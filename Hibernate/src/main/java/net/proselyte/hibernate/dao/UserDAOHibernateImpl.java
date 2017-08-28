@@ -11,7 +11,7 @@ import java.util.*;
 import java.util.List;
 
 @Repository
-public class DeveloperDAOHibernateImpl implements DeveloperDAOHibernate {
+public class UserDAOHibernateImpl implements UserDAOHibernate {
     @Autowired
     private SessionFactory sessionFactory;
     private Session getCurrentSession() {

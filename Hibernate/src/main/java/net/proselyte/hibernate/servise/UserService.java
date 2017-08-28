@@ -4,7 +4,7 @@ import net.proselyte.hibernate.annotations.User;
 
 import java.util.List;
 
-public interface DeveloperService {
+public interface UserService {
 
     Integer addDeveloper(String firstName, int age, String specialty, int experience);
     Integer updateDeveloper(User user);

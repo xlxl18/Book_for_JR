@@ -1,33 +1,32 @@
 package net.proselyte.hibernate.servise;
 
 import net.proselyte.hibernate.annotations.User;
-import net.proselyte.hibernate.dao.DeveloperDAOHibernate;
+import net.proselyte.hibernate.dao.UserDAOHibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service("devHibernateService")
-public class DeveloperServiceImpl  implements  DeveloperService {
+public class UserServiceImpl  implements  UserService {
 
     @Autowired
     @Qualifier("getNewDevHibernateDAO")
-    private DeveloperDAOHibernate developerDAOHibernate;
+    private UserDAOHibernate userDAOHibernate;
 
     @Override
     public Integer addDeveloper(String firstName, int age, String specialty, int experience) {
-        return developerDAOHibernate.addDeveloper(firstName, age, specialty, experience);
+        return userDAOHibernate.addDeveloper(firstName, age, specialty, experience);
     }
 
     public Integer updateDeveloper(User user) {
-        return developerDAOHibernate.updateDeveloper(user);
+        return userDAOHibernate.updateDeveloper(user);
     }
 
     @Override
     public void removeDeveloper(int developerId) {
-        developerDAOHibernate.removeDeveloper(developerId);
+        userDAOHibernate.removeDeveloper(developerId);
     }
 
     @Override
@@ -42,15 +41,15 @@ public class DeveloperServiceImpl  implements  DeveloperService {
 
     @Override
     public List<User> listDevelopersReturn() {
-        return developerDAOHibernate.listDevelopersReturn();
+        return userDAOHibernate.listDevelopersReturn();
     }
 
     @Override
     public List<User> getAllUsers(String userName) {
-        return developerDAOHibernate.getAllUsers(userName);
+        return userDAOHibernate.getAllUsers(userName);
     }
     public User getUser(int id){
-        return developerDAOHibernate.getUser(id);
+        return userDAOHibernate.getUser(id);
     }
 
 }

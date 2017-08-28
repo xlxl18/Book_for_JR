@@ -2,7 +2,7 @@ package net.proselyte.hibernate.config;
 
 
 import net.proselyte.hibernate.annotations.User;
-import net.proselyte.hibernate.dao.DeveloperDAOHibernateImpl;
+import net.proselyte.hibernate.dao.UserDAOHibernateImpl;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -35,8 +35,8 @@ public class HibernateConfig {
 
 
     @Bean
-    public DeveloperDAOHibernateImpl getNewDevHibernateDAO() {
-        return new DeveloperDAOHibernateImpl();
+    public UserDAOHibernateImpl getNewDevHibernateDAO() {
+        return new UserDAOHibernateImpl();
     }
 
 }

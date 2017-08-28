@@ -2,7 +2,6 @@ package net.proselyte.hibernate.servise.servlets;
 
 
 import net.proselyte.hibernate.annotations.User;
-import net.proselyte.hibernate.dao.DeveloperDAOHibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
