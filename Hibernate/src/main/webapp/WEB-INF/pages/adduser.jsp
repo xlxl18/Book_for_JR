@@ -1,14 +1,13 @@
 <%@ page import="java.util.Enumeration" %>
+<%@ page import="net.proselyte.hibernate.annotations.User" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <jsp:useBean id="now" class="java.util.Date" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <% Enumeration<String> form = request.getAttributeNames();
-
-//for(String name:form.hasMoreElements()) {}
-
-
+ Object form2 = request.getAttribute("userDate");
+ User s = (User)form2;
 %>
 
 <html>
@@ -42,12 +41,30 @@
          <td>
                 Are new User is Admin?
          </td>
+
          <td>
-         <form:radiobutton path="isAdmin" value="1" />
-         Yes
-         <form:radiobutton path="isAdmin" value="0" checked="true"/>
-         No
+
+             <% //я - гений!!!!
+                   if(s != null && s.getIsAdmin().equals("true")) {
+              %>
+             <form:radiobutton path="isAdmin" value="true" checked="true" />
+             Yes
+             <form:radiobutton path="isAdmin" value="false"  />
+             No
+             <%
+                     }
+                     else {
+             %>
+             <form:radiobutton path="isAdmin" value="true" />
+             Yes
+             <form:radiobutton path="isAdmin" value="false"  checked="true" />
+             No
+             <%
+                 }
+             %>
+
          </td>
+
      </tr>
      <tr>
          <td>
@@ -97,11 +114,7 @@
             return false;
         }
 
-        if(isAdmin < 0 || isAdmin > 1) {
-            alert('Please enter proper isAdmin');
-            $('#isAdmin').focus();
-            return false;
-        }
+
         return true;
     };
 </script>
