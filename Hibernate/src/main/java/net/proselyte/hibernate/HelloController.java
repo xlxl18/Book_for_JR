@@ -1,7 +1,7 @@
 package net.proselyte.hibernate;
 
 import net.proselyte.hibernate.annotations.User;
-import net.proselyte.hibernate.servise.DeveloperService;
+import net.proselyte.hibernate.servise.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
@@ -18,7 +18,7 @@ import java.util.List;
 public class HelloController {
     @Autowired
     @Qualifier("devHibernateService")
-    private DeveloperService developerService;
+    private UserService developerService;
 
     @RequestMapping(value="/", method = RequestMethod.GET)
     public String printWelcome0(ModelMap model) {
@@ -49,15 +49,11 @@ public class HelloController {
     }
 
     @RequestMapping(value = "/adduserform", method = RequestMethod.POST)
-    public ModelAndView testing2 (@ModelAttribute ("user") User user) {
+    public ModelAndView testing2 (@ModelAttribute ("user") User user, ModelMap model) {
          developerService.addDeveloper(user.getName(), user.getAge(), user.getIsAdmin(), user.getDate());
-
-        System.out.println(user.getName());
-        System.out.println(user.getAge());
-        System.out.println(user.getIsAdmin());
-        System.out.println(user.getDate());
-
-        return new ModelAndView("adduser-success");
+        model.addAttribute("message", "User successfully saved!");
+        model.addAttribute("message2", "Make your choice, please.");
+        return new ModelAndView("index");
     }
 
     @RequestMapping(value = "/editUser", method = RequestMethod.GET)
@@ -72,9 +68,11 @@ public class HelloController {
     }
 
     @RequestMapping(value = "/editUser", method = RequestMethod.POST)
-    public ModelAndView testing4 (@ModelAttribute ("user") User user) {
+    public ModelAndView testing4 (@ModelAttribute ("user") User user, ModelMap model) {
         developerService.updateDeveloper(user);
-        return new ModelAndView("adduser-success");
+        model.addAttribute("message", "User successfully saved!");
+        model.addAttribute("message2", "Make your choice, please.");
+        return new ModelAndView("index");
     }
 
 

@@ -53,7 +53,7 @@
      </tr>
      <tr>
          <td colspan="2">
-                <input type="submit" name="save"  value="Save new user"/>
+                <input type="submit" name="save"  value="Save user"/>
          </td>
          <td>
                 <input type="reset" value="Reset" />
