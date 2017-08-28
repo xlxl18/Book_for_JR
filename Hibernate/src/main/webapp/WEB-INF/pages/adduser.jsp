@@ -7,7 +7,7 @@
     <title>Getting Started: Handling Form Submission</title>
 </head>
 <body>
-<a href="viewusers">View All Records</a><br/>
+<a href="viewusers">View All Users</a><br/>
 <h1>${message}</h1>
 
 <form:form method="post" commandName="user" action="${message2}">

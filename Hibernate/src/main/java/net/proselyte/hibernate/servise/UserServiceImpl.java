@@ -30,16 +30,6 @@ public class UserServiceImpl  implements  UserService {
     }
 
     @Override
-    public void listDevelopers() {
-
-    }
-
-    @Override
-    public void updateDeveloper(int developerId, int experience) {
-
-    }
-
-    @Override
     public List<User> listDevelopersReturn() {
         return userDAOHibernate.listDevelopersReturn();
     }

@@ -56,27 +56,6 @@ public class UserDAOHibernateImpl implements UserDAOHibernate {
         return developerId;
     }
     @Override
-    public boolean findUser(String user) {
-        Session session = sessionFactory.openSession();
-        Transaction transaction = null;
-        transaction = session.beginTransaction();
-        List<User> developers = session.createQuery("FROM User").list();
-        session.close();
-        return user.contains(user);
-    }
-    @Override
-    public void updateDeveloper(int developerId, int experience) {
-        Session session = sessionFactory.openSession();
-        Transaction transaction = null;
-
-        transaction = session.beginTransaction();
-    User developer = (User) session.get(User.class, developerId);
-       // developer.setExperience(experience);
-        session.update(developer);
-        transaction.commit();
-        session.close();
-    }
-    @Override
     public void removeDeveloper(int developerId) {
         Session session = sessionFactory.openSession();
         Transaction transaction = null;
