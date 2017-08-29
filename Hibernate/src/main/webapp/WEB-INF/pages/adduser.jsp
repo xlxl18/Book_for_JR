@@ -2,7 +2,7 @@
 <%@ page import="net.proselyte.hibernate.annotations.User" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
-<jsp:useBean id="now" class="java.util.Date" />
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <% Enumeration<String> form = request.getAttributeNames();
@@ -44,23 +44,32 @@
 
          <td>
 
-             <% //я - гений!!!!
-                   if(s != null && s.getIsAdmin().equals("true")) {
+             <% //я - javaKing!!!!
+                   if(s != null && s.getIsAdmin() == 1) {
               %>
-             <form:radiobutton path="isAdmin" value="true" checked="true" />
+             <form:radiobutton path="isAdmin" value="1" checked="true" />
              Yes
-             <form:radiobutton path="isAdmin" value="false"  />
+             <form:radiobutton path="isAdmin" value="0"  />
              No
              <%
                      }
-                     else {
+                     else if(s != null && s.getIsAdmin() == 0)  {
              %>
-             <form:radiobutton path="isAdmin" value="true" />
+             <form:radiobutton path="isAdmin" value="1" />
              Yes
-             <form:radiobutton path="isAdmin" value="false"  checked="true" />
+             <form:radiobutton path="isAdmin" value="0"  checked="true" />
              No
              <%
                  }
+                 else  if(s == null) {
+             %>
+             <form:radiobutton path="isAdmin" value="1" />
+             Yes
+             <form:radiobutton path="isAdmin" value="0"  checked="true" />
+             No
+             <%
+                 }
+
              %>
 
          </td>

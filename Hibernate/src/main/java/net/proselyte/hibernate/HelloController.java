@@ -58,6 +58,7 @@ public class HelloController {
     public ModelAndView editUser(@RequestParam int id, @ModelAttribute User user) {
         ModelAndView mv = new ModelAndView();
         user = userService.getUser(id);
+        System.out.println(user.getIsAdmin());
         mv.addObject("message", "Edit User");
         mv.addObject("message2", "editUser");
         mv.setViewName("adduser");//страничка jsp которую я вызываю
@@ -68,7 +69,7 @@ public class HelloController {
     @RequestMapping(value = "/editUser", method = RequestMethod.POST)
     public ModelAndView testing4 (@ModelAttribute ("user") User user, ModelMap model) {
         userService.updateUser(user);
-        model.addAttribute("message", "User successfully saved!");
+        model.addAttribute("message", "User "+user.getName()+ " successfully added!");
         model.addAttribute("message2", "Make your choice, please.");
         return new ModelAndView("index");
     }

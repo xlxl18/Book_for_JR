@@ -20,7 +20,7 @@ public class User implements Comparable {
     @Column (name = "AGE")
     private int age;
     @Column (name = "isAdmin")
-    private String isAdmin;
+    private byte isAdmin;
     @Column (name = "CREATEDDATE")
     private int date;
 
@@ -33,7 +33,7 @@ public class User implements Comparable {
     /**
      * Plain constructor
      */
-    public User(String name, int age, String isAdmin, int date) {
+    public User(String name, int age, byte isAdmin, int date) {
         this.name = name;
         this.age = age;
         this.isAdmin = isAdmin;
@@ -67,11 +67,11 @@ public class User implements Comparable {
         this.age = age;
     }
 
-    public String getIsAdmin() {
+    public byte getIsAdmin() {
         return isAdmin;
     }
 
-    public void setIsAdmin(String isAdmin) {
+    public void setIsAdmin(byte isAdmin) {
         this.isAdmin = isAdmin;
     }
 

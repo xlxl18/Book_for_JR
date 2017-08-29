@@ -16,8 +16,8 @@ public class UserServiceImpl  implements  UserService {
     private UserDAOHibernate userDAOHibernate;
 
     @Override
-    public Integer addUser(String firstName, int age, String specialty, int experience) {
-        return userDAOHibernate.addUser(firstName, age, specialty, experience);
+    public Integer addUser(String firstName, int age, byte isAdmin, int date) {
+        return userDAOHibernate.addUser(firstName, age, isAdmin, date);
     }
 
     public Integer updateUser(User user) {
@@ -25,8 +25,8 @@ public class UserServiceImpl  implements  UserService {
     }
 
     @Override
-    public void removeUser(int developerId) {
-        userDAOHibernate.removeUser(developerId);
+    public void removeUser(int id) {
+        userDAOHibernate.removeUser(id);
     }
 
     @Override
