@@ -41,5 +41,9 @@ public class UserServiceImpl  implements  UserService {
     public User getUser(int id){
         return userDAOHibernate.getUser(id);
     }
+    public List<User> listUsersReturnFROM(int start, int maxRows){
+        return userDAOHibernate.listUsersReturnFROM(start,maxRows);
+    }
+
 
 }

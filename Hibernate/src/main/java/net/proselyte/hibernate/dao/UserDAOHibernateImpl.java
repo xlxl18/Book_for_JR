@@ -1,6 +1,7 @@
 package net.proselyte.hibernate.dao;
 
 import net.proselyte.hibernate.annotations.User;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -117,6 +118,24 @@ public class UserDAOHibernateImpl implements UserDAOHibernate {
         }
         return users;
 
+    }
+    @Override
+    public List<User> listUsersReturnFROM(int start, int maxRows) {
+        List<User> users;
+        //Session session = getCurrentSession();
+        Session session = getSessionFactory().openSession();
+        Transaction transaction = null;
+
+        transaction = session.beginTransaction();
+
+        // SQL: SELECT * FROM User LIMIT start, maxRows;
+        Query q = session.createQuery("FROM User");
+        q.setFirstResult(start);
+        q.setMaxResults(maxRows);
+        users = q.list();
+
+        session.close();
+        return users;
     }
 
 
