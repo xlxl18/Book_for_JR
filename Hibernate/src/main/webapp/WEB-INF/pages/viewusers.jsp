@@ -56,6 +56,22 @@
                     { "mData": "isAdmin" },
                     { "mData": "date" },
 
+					{
+                       // "aTargets": [5],
+                        "mData": "id",
+                        "mRender": function (id, type, full) {
+                            return '<a href="/editUser?id=' + parseInt(id) + '">Edit</a>';
+                        }
+                    },
+
+
+					{
+                        "mData": "id",
+                        "mRender": function (id, type, full) {
+                            return '<a href="/deleteUser?id=' + parseInt(id) + '">Delete</a>';
+                        }
+                    },
+
 
                 ]
             } );
@@ -84,6 +100,7 @@
 			<th>Delete</th>
 		</tr>
 		</thead>
+	</table>
 
 
 
@@ -96,3 +113,5 @@
 
 	<br/><a href="adduserform">Add New User</a>
 </body>
+
+</html>

@@ -36,8 +36,15 @@ public class HelloController {
 
     @RequestMapping(value = "/viewusers", method = RequestMethod.GET)
     public String printHibernate(ModelMap model) {
-        List<User> listResults = userService.listUsersReturn();
-        model.addAttribute("listResults", listResults);
+        //List<User> listResults = userService.listUsersReturn();
+       // model.addAttribute("listResults", listResults);
+        return "viewusers";
+    }
+    @RequestMapping("/deleteUser")
+    public String deleteUser(@RequestParam int id, ModelMap model)
+    {   userService.removeUser(id);
+       // List<User> listResults = userService.listUsersReturn();
+        //model.addAttribute("listResults", listResults);
         return "viewusers";
     }
 
@@ -68,13 +75,7 @@ public class HelloController {
         // Здесь представлена логика разбиения на страницы на стороне сервера. На основании номера страницы,
         // которую вы могли бы позвонить в базу данных создаем новый список и отправляем обратно клиенту.
         // Для демонстрации я перетасовываю тот же список для случайного отображения данных
-        if (pageNumber == 1) {
-            Collections.shuffle(personsList);
-        }else if (pageNumber == 2) {
-            Collections.shuffle(personsList);
-        }else {
-            Collections.shuffle(personsList);
-        }
+
 
         //Search functionality: Returns filtered list based on search parameter
         // Функция поиска: возвращает список фильтров на основе параметра поиска
@@ -161,14 +162,6 @@ public class HelloController {
         model.addAttribute("message", "User "+user.getName()+ " successfully added!");
         model.addAttribute("message2", "Make your choice, please.");
         return new ModelAndView("index");
-    }
-
-    @RequestMapping("deleteUser")
-    public String deleteUser(@RequestParam int id, ModelMap model)
-    {   userService.removeUser(id);
-        List<User> listResults = userService.listUsersReturn();
-        model.addAttribute("listResults", listResults);
-        return "viewusers";
     }
 
     @RequestMapping("searchUser")
