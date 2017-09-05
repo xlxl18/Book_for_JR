@@ -1,6 +1,8 @@
 package net.proselyte.hibernate.annotations;
 
 
+import java.sql.Timestamp;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,7 +24,7 @@ public class User implements Comparable {
     @Column (name = "isAdmin")
     private byte isAdmin;
     @Column (name = "CREATEDDATE")
-    private int date;
+    private Timestamp date;
 
     /**
      * Default Constructor
@@ -33,7 +35,7 @@ public class User implements Comparable {
     /**
      * Plain constructor
      */
-    public User(String name, int age, byte isAdmin, int date) {
+    public User(String name, int age, byte isAdmin, Timestamp date) {
         this.name = name;
         this.age = age;
         this.isAdmin = isAdmin;
@@ -75,11 +77,11 @@ public class User implements Comparable {
         this.isAdmin = isAdmin;
     }
 
-    public int getDate() {
+    public Timestamp getDate() {
         return date;
     }
 
-    public void setDate(int date) {
+    public void setDate(Timestamp date) {
         this.date = date;
     }
     /**

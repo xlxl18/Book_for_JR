@@ -1,5 +1,6 @@
 package net.proselyte.hibernate.servise;
 
+import java.sql.Timestamp;
 import net.proselyte.hibernate.annotations.User;
 import net.proselyte.hibernate.dao.UserDAOHibernate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ public class UserServiceImpl  implements  UserService {
     private UserDAOHibernate userDAOHibernate;
 
     @Override
-    public Integer addUser(String firstName, int age, byte isAdmin, int date) {
+    public Integer addUser(String firstName, int age, byte isAdmin, Timestamp date) {
         return userDAOHibernate.addUser(firstName, age, isAdmin, date);
     }
     @Override

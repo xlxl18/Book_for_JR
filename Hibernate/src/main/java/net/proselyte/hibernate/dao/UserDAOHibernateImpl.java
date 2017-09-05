@@ -22,7 +22,7 @@ public class UserDAOHibernateImpl implements UserDAOHibernate {
         return sessionFactory;
     }
     @Override
-    public Integer addUser(String user, int age, byte isAdmin, int date) {
+    public Integer addUser(String user, int age, byte isAdmin, Timestamp date) {
         Session session = getSessionFactory().openSession();
         Transaction transaction = null;
         Integer developerId = null;
@@ -36,7 +36,6 @@ public class UserDAOHibernateImpl implements UserDAOHibernate {
     }
     @Override
     public Integer updateUser(User user) {
-        System.out.println("Попытка добавления пользователя в базу = " + user.getName());
         Session session = getSessionFactory().openSession();
         Transaction transaction = null;
         Integer developerId = null;

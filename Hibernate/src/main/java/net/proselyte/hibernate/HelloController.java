@@ -2,6 +2,7 @@ package net.proselyte.hibernate;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import java.sql.Timestamp;
 import net.proselyte.hibernate.annotations.User;
 import net.proselyte.hibernate.servise.UserJsonObject;
 import net.proselyte.hibernate.servise.UserService;
@@ -112,7 +113,7 @@ public class HelloController {
 
     @RequestMapping(value = "/adduserform", method = RequestMethod.POST)
     public ModelAndView testing2 (@ModelAttribute ("user") User user, ModelMap model) {
-       int test = userService.addUser(user.getName(), user.getAge(), user.getIsAdmin(), user.getDate());
+       int test = userService.addUser(user.getName(), user.getAge(), user.getIsAdmin(), new Timestamp(System.currentTimeMillis()) );
        if (test > 0) {
         model.addAttribute("message", "User successfully saved!");
         model.addAttribute("message2", "Make your choice, please.");}
