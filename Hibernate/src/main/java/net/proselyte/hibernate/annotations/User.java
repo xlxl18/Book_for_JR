@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="HIBERNATE_DEVELOPERS")
+@Table(name= "hibernate_developers")
 
 public class User implements Comparable {
     @Id @GeneratedValue (strategy = GenerationType.IDENTITY)
