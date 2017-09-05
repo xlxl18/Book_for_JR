@@ -7,8 +7,6 @@ import net.proselyte.hibernate.servise.UserJsonObject;
 import net.proselyte.hibernate.servise.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -16,8 +14,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -60,6 +56,7 @@ public class HelloController {
         Integer pageNumber = 0;
         if (null != request.getParameter("iDisplayStart"))
         {pageNumber = (Integer.valueOf(request.getParameter("iDisplayStart")) / pageDisplayLength) + 1;}
+
 
         //Fetch search parameter
         // Выбор параметра поиска

@@ -21,7 +21,6 @@ public class UserDAOHibernateImpl implements UserDAOHibernate {
     public SessionFactory getSessionFactory() {
         return sessionFactory;
     }
-
     @Override
     public Integer addUser(String user, int age, byte isAdmin, int date) {
         Session session = getSessionFactory().openSession();
