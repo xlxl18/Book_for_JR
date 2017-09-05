@@ -44,6 +44,10 @@ public class UserServiceImpl  implements  UserService {
     public List<User> listUsersReturnFROM(int start, int maxRows){
         return userDAOHibernate.listUsersReturnFROM(start,maxRows);
     }
+    @Override
+    public int getCountUsers(){
+        return userDAOHibernate.getCountUsers();
+    }
 
 
 }

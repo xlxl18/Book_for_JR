@@ -137,6 +137,15 @@ public class UserDAOHibernateImpl implements UserDAOHibernate {
         session.close();
         return users;
     }
-
-
+    @Override
+    public int getCountUsers(){
+        int count = 0;
+        User users = null;
+        Session session = getSessionFactory().openSession();
+        Transaction transaction = null;
+        transaction = session.beginTransaction();
+        count = ((Long)session.createQuery("select count(*) from User ").uniqueResult()).intValue();
+        session.close();
+        return count;
+    }
 }

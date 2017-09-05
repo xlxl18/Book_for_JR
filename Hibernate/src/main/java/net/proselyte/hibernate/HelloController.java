@@ -38,6 +38,7 @@ public class HelloController {
     public String printHibernate(ModelMap model) {
         //List<User> listResults = userService.listUsersReturn();
        // model.addAttribute("listResults", listResults);
+
         return "viewusers";
     }
     @RequestMapping("/deleteUser")
@@ -85,10 +86,10 @@ public class HelloController {
         UserJsonObject userJsonObject = new UserJsonObject();
         //Set Total display record
         // Встановити повний відображення запису
-        userJsonObject.setiTotalDisplayRecords(500);
+        userJsonObject.setiTotalDisplayRecords(userService.getCountUsers());
         //Set Total record
         // Встановити загальну кількість записів
-        userJsonObject.setiTotalRecords(500);
+        userJsonObject.setiTotalRecords(userService.getCountUsers());
         userJsonObject.setAaData(personsList);
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -171,8 +172,12 @@ public class HelloController {
     }
 
     @RequestMapping(value = "/getData", method = RequestMethod.GET)
-    public ResponseEntity<String> getData() {
-        return new ResponseEntity<String>("TEST!", HttpStatus.OK);
+    public ResponseEntity<Integer> getData() {
+        int count = userService.getCountUsers();
+        System.out.println(count);
+
+
+        return new ResponseEntity<Integer>(55, HttpStatus.OK);
     }
 
 }

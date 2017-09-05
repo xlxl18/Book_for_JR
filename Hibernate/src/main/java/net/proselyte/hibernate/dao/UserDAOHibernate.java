@@ -14,4 +14,5 @@ public interface UserDAOHibernate {
      List<User> getAllUsers(String nameOfUser);
      User getUser(int id);
      List<User> listUsersReturnFROM(int start, int maxRows);
+     int  getCountUsers();
 }
