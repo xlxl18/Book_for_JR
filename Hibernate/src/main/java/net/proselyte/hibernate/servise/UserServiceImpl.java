@@ -19,30 +19,29 @@ public class UserServiceImpl  implements  UserService {
     public Integer addUser(String firstName, int age, byte isAdmin, int date) {
         return userDAOHibernate.addUser(firstName, age, isAdmin, date);
     }
-
+    @Override
     public Integer updateUser(User user) {
         return userDAOHibernate.updateUser(user);
     }
-
     @Override
     public void removeUser(int id) {
         userDAOHibernate.removeUser(id);
     }
-
     @Override
     public List<User> listUsersReturn() {
         return userDAOHibernate.listUsersReturn();
     }
-
     @Override
     public List<User> getAllUsers(String userName) {
         return userDAOHibernate.getAllUsers(userName);
     }
+    @Override
     public User getUser(int id){
         return userDAOHibernate.getUser(id);
     }
-    public List<User> listUsersReturnFROM(int start, int maxRows){
-        return userDAOHibernate.listUsersReturnFROM(start,maxRows);
+    @Override
+    public List<User> listUsersReturnFROM(int start, int maxRows, String searchParameter){
+        return userDAOHibernate.listUsersReturnFROM(start,maxRows,searchParameter);
     }
     @Override
     public int getCountUsers(){

@@ -69,6 +69,7 @@ public class HelloController {
         //Create page list data
         // Создание данных списка страниц
         List<User> personsList = createPaginationData(pageNumber, pageDisplayLength);
+      //  List<User> personsList = createPaginationDataOnSearchParameter(pageNumber, pageDisplayLength, searchParameter);
 
         //Here is server side pagination logic. Based on the page number you could make call
         //to the data base create new list and send back to the client. For demo I am shuffling
@@ -80,15 +81,15 @@ public class HelloController {
 
         //Search functionality: Returns filtered list based on search parameter
         // Функция поиска: возвращает список фильтров на основе параметра поиска
-  //      personsList = getListBasedOnSearchParameter(searchParameter,personsList);
+  //      personsList = getListBasedOnSearchParameter(searchParameter,userService.listUsersReturn());
 
 
         UserJsonObject userJsonObject = new UserJsonObject();
         //Set Total display record
-        // Встановити повний відображення запису
+        // Встановити повний відображення запису до фильтрации
         userJsonObject.setiTotalDisplayRecords(userService.getCountUsers());
         //Set Total record
-        // Встановити загальну кількість записів
+        // Встановити загальну кількість записів после фильтрации
         userJsonObject.setiTotalRecords(userService.getCountUsers());
         userJsonObject.setAaData(personsList);
 
@@ -104,9 +105,7 @@ public class HelloController {
             List<User> personsListForSearch = new ArrayList<User>();
             searchParameter = searchParameter.toUpperCase();
             for (User person : personsList) {
-                if (person.getName().toUpperCase().indexOf(searchParameter)!= -1 || person.getOffice().toUpperCase().indexOf(searchParameter)!= -1
-                        || person.getPhone().toUpperCase().indexOf(searchParameter)!= -1 || person.getPosition().toUpperCase().indexOf(searchParameter)!= -1
-                        || person.getSalary().toUpperCase().indexOf(searchParameter)!= -1 || person.getStart_date().toUpperCase().indexOf(searchParameter)!= -1) {
+                if (person.getName().toUpperCase().indexOf(searchParameter)!= -1 ) {
                     personsListForSearch.add(person);
                 }
 
@@ -116,13 +115,18 @@ public class HelloController {
         }
         return personsList;
     }
-*/
+ */
     private List<User> createPaginationData(Integer pageNumber, Integer pageDisplayLength) {
         int start = (pageNumber-1)*pageDisplayLength ;
         int maxRows = start + pageDisplayLength;
-        return userService.listUsersReturnFROM(start, maxRows);
+        return userService.listUsersReturnFROM(start, maxRows, null);
     }
 
+    private List<User> createPaginationDataOnSearchParameter(Integer pageNumber, Integer pageDisplayLength, String searchParameter) {
+        int start = (pageNumber-1)*pageDisplayLength ;
+        int maxRows = start + pageDisplayLength-1;
+        return userService.listUsersReturnFROM(start, maxRows, searchParameter);
+    }
 
     @RequestMapping(value = "/adduserform", method = RequestMethod.GET)
     public ModelAndView testing() {
@@ -175,8 +179,6 @@ public class HelloController {
     public ResponseEntity<Integer> getData() {
         int count = userService.getCountUsers();
         System.out.println(count);
-
-
         return new ResponseEntity<Integer>(55, HttpStatus.OK);
     }
 

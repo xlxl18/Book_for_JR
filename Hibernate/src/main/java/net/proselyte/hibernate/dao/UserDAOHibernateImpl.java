@@ -120,16 +120,20 @@ public class UserDAOHibernateImpl implements UserDAOHibernate {
 
     }
     @Override
-    public List<User> listUsersReturnFROM(int start, int maxRows) {
+    public List<User> listUsersReturnFROM(int start, int maxRows, String searchParameter) {
         List<User> users;
         //Session session = getCurrentSession();
         Session session = getSessionFactory().openSession();
         Transaction transaction = null;
 
         transaction = session.beginTransaction();
-
-        // SQL: SELECT * FROM User LIMIT start, maxRows;
         Query q = session.createQuery("FROM User");
+        // SQL: SELECT * FROM User LIMIT start, maxRows;
+        if (null != searchParameter && !searchParameter.equals("")) {
+            q = session.createQuery("FROM User WHERE  name=?");
+            q.setString(0, searchParameter );
+        }
+
         q.setFirstResult(start);
         q.setMaxResults(maxRows);
         users = q.list();

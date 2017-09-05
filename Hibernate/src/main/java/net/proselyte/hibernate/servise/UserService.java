@@ -12,7 +12,8 @@ public interface UserService {
     User getUser(int id);
     List<User> listUsersReturn();
     List<User> getAllUsers(String name);
-    List<User> listUsersReturnFROM(int start, int maxRows);
+    List<User> listUsersReturnFROM(int start, int maxRows, String searchParameter);
     int getCountUsers();
+
 
 }
