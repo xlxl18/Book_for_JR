@@ -28,10 +28,6 @@ public class UserServiceImpl  implements  UserService {
         userDAOHibernate.removeUser(id);
     }
     @Override
-    public List<User> listUsersReturn() {
-        return userDAOHibernate.listUsersReturn();
-    }
-    @Override
     public List<User> getAllUsers(String userName) {
         return userDAOHibernate.getAllUsers(userName);
     }

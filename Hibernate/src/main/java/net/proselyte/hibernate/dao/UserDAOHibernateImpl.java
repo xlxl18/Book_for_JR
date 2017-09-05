@@ -45,17 +45,7 @@ public class UserDAOHibernateImpl implements UserDAOHibernate {
         transaction = session.beginTransaction();
         session.update(user);
         //session.save(user);
-
-/*
-        if(user.getId() == 0){ // if user id is 0 then creating user other updating user
-            session.save(user);
-        } else {
-            session.delete(user);
-            session.save(user);
-        }
-
-*/
-        transaction.commit();
+    transaction.commit();
         session.close();
         return developerId;
     }
@@ -69,19 +59,6 @@ public class UserDAOHibernateImpl implements UserDAOHibernate {
         session.delete(developer);
         transaction.commit();
         session.close();
-    }
-    @Override
-    public List<User> listUsersReturn() {
-        List<User> users;
-        //Session session = getCurrentSession();
-        Session session = getSessionFactory().openSession();
-        Transaction transaction = null;
-
-        transaction = session.beginTransaction();
-        users = session.createQuery("FROM User").list();
-        session.close();
-        Collections.sort(users);
-        return users;
     }
     @Override
     public List<User> getAllUsers(String nameOfUser){

@@ -10,7 +10,7 @@ public interface UserService {
     Integer updateUser(User user);
     void removeUser(int user);
     User getUser(int id);
-    List<User> listUsersReturn();
+
     List<User> getAllUsers(String name);
     List<User> listUsersReturnFROM(int start, int maxRows, String searchParameter);
     int getCountUsers();

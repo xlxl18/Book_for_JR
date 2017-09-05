@@ -59,12 +59,7 @@ public class HelloController {
         // Получить номер страницы с клиента
         Integer pageNumber = 0;
         if (null != request.getParameter("iDisplayStart"))
-            System.out.print("request.getParameter = " + request.getParameter("iDisplayStart"));
-
-        {  pageNumber = (Integer.valueOf(request.getParameter("iDisplayStart")) / pageDisplayLength) + 1;
-         // pageNumber = (Integer.valueOf(request.getParameter("iDisplayStart")) / Integer.valueOf(request.getParameter("iDisplayStart"))) + 1;
-          //  pageNumber =  pageNumber + 1;
-        }
+        {pageNumber = (Integer.valueOf(request.getParameter("iDisplayStart")) / pageDisplayLength) + 1;}
         System.out.println(":  pageNumber = " + pageNumber);
 
         //Fetch search parameter
@@ -73,7 +68,6 @@ public class HelloController {
 
         //Create page list data
         // Создание данных списка страниц
-       // List<User> personsList = createPaginationData(pageNumber, pageDisplayLength);
         List<User> personsList = createPaginationDataOnSearchParameter(pageNumber, pageDisplayLength, searchParameter);
 
         //Here is server side pagination logic. Based on the page number you could make call
