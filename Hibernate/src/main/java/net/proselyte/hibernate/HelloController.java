@@ -60,7 +60,6 @@ public class HelloController {
         Integer pageNumber = 0;
         if (null != request.getParameter("iDisplayStart"))
         {pageNumber = (Integer.valueOf(request.getParameter("iDisplayStart")) / pageDisplayLength) + 1;}
-        System.out.println(":  pageNumber = " + pageNumber);
 
         //Fetch search parameter
         // Выбор параметра поиска
@@ -82,6 +81,7 @@ public class HelloController {
         UserJsonObject userJsonObject = new UserJsonObject();
         //Set Total display record
         // Встановити повний відображення запису до фильтрации
+
         userJsonObject.setiTotalDisplayRecords(userService.getCountUsers());
         //Set Total record
         // Встановити загальну кількість записів после фильтрации
@@ -95,7 +95,7 @@ public class HelloController {
     }
 
     private List<User> createPaginationDataOnSearchParameter(Integer pageNumber, Integer pageDisplayLength, String searchParameter) {
-        int start = (pageNumber-1)*pageDisplayLength ;
+        int start = (pageNumber - 1) * pageDisplayLength ;
         int maxRows = pageDisplayLength;
         return userService.listUsersReturnFROM(start, maxRows, searchParameter);
     }
@@ -115,9 +115,12 @@ public class HelloController {
 
     @RequestMapping(value = "/adduserform", method = RequestMethod.POST)
     public ModelAndView testing2 (@ModelAttribute ("user") User user, ModelMap model) {
-        userService.addUser(user.getName(), user.getAge(), user.getIsAdmin(), user.getDate());
+       int test = userService.addUser(user.getName(), user.getAge(), user.getIsAdmin(), user.getDate());
+       if (test > 0) {
         model.addAttribute("message", "User successfully saved!");
-        model.addAttribute("message2", "Make your choice, please.");
+        model.addAttribute("message2", "Make your choice, please.");}
+        else {model.addAttribute("message", "Error adding user!");
+           model.addAttribute("message2", "Try again.");}
         return new ModelAndView("index");
     }
 

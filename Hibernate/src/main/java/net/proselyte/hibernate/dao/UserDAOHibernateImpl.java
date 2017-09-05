@@ -24,7 +24,6 @@ public class UserDAOHibernateImpl implements UserDAOHibernate {
 
     @Override
     public Integer addUser(String user, int age, byte isAdmin, int date) {
-        System.out.println("Попытка добавления пользователя в базу = " + user);
         Session session = getSessionFactory().openSession();
         Transaction transaction = null;
         Integer developerId = null;
