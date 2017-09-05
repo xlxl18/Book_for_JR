@@ -22,7 +22,7 @@
  <table>
      <tr>
             <td>
-                Name new User:
+                Name User:
             </td>
             <td>
                 <form:hidden path="id" value="${userDate.id}"/>
@@ -31,7 +31,7 @@
      </tr>
      <tr>
          <td>
-                Age new User:
+                Age User:
          </td>
          <td>
                 <form:input path="age" value="${userDate.age}"/>
@@ -39,12 +39,12 @@
      </tr>
      <tr>
          <td>
-                Are new User is Admin?
+                Are User is Admin?
          </td>
 
          <td>
 
-             <% //я - javaKing!!!!
+             <% //я - javaKing!!!! короче - это свич для загрузки isAdmin из БД. не работает!
                    if(s != null && s.getIsAdmin() == 1) {
               %>
              <form:radiobutton path="isAdmin" value="1" checked="true" />
@@ -69,21 +69,16 @@
              No
              <%
                  }
-
              %>
-
          </td>
 
      </tr>
      <tr>
          <td>
-              new Date:
+             Created Date:
          </td>
          <td>
-
              <form:input path="date" value="${userDate.date}" />
-
-
          </td>
      </tr>
 
@@ -105,9 +100,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script type="text/javascript">
+
     function script() {
-
-
         var name = $('#name').val().trim();
         var age = $('#age').val();
         var isAdmin = $('#isAdmin').val();
@@ -122,12 +116,8 @@
             $('#age').focus();
             return false;
         }
-
-
         return true;
     };
 </script>
 </body>
 </html>
-<!--td><!--form:input path="date" type="datetime-local" step="1"/></td-->
-<!--form:checkbox path="isAdmin" label="Would you like to join our mailinglist?" /-->

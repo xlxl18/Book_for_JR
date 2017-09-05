@@ -105,7 +105,11 @@ public class HelloController {
         mv.addObject("message", "Add New User");
         mv.addObject("message2", "adduserform");
         mv.setViewName("adduser");//страничка jsp которую я вызываю
-        mv.addObject("user", new User());
+        User user = new User();
+        user.setDate(new Timestamp(System.currentTimeMillis()));
+        mv.addObject("user", user);
+
+
         return mv;
         //method 2
         // return new ModelAndView("test-4", "user", new User());
@@ -113,7 +117,7 @@ public class HelloController {
 
     @RequestMapping(value = "/adduserform", method = RequestMethod.POST)
     public ModelAndView testing2 (@ModelAttribute ("user") User user, ModelMap model) {
-       int test = userService.addUser(user.getName(), user.getAge(), user.getIsAdmin(), new Timestamp(System.currentTimeMillis()) );
+       int test = userService.addUser(user.getName(), user.getAge(), user.getIsAdmin(), user.getDate());
        if (test > 0) {
         model.addAttribute("message", "User successfully saved!");
         model.addAttribute("message2", "Make your choice, please.");}
