@@ -11,7 +11,7 @@ import java.sql.Timestamp;
 import java.util.*;
 
 
-@Repository
+//@Repository
 public class UserDAOHibernateImpl implements UserDAOHibernate {
    // private final Connection con;
     @Autowired

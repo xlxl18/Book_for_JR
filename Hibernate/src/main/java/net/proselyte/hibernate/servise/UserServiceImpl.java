@@ -13,7 +13,8 @@ import java.util.List;
 public class UserServiceImpl  implements  UserService {
 
     @Autowired
-    @Qualifier("getNewDevHibernateDAO")
+   // @Qualifier("getNewDevHibernateDAO")
+    @Qualifier("getUserJpiImpl")
     private UserDAOHibernate userDAOHibernate;
 
     @Override

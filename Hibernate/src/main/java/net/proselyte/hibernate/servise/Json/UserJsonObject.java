@@ -1,4 +1,4 @@
-package net.proselyte.hibernate.servise;
+package net.proselyte.hibernate.servise.Json;
 
 import net.proselyte.hibernate.annotations.User;
 

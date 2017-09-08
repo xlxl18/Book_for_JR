@@ -3,6 +3,7 @@ package net.proselyte.hibernate.config;
 
 
 import net.proselyte.hibernate.dao.UserDAOHibernateImpl;
+import net.proselyte.hibernate.dao.UserJpiImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -17,7 +18,7 @@ import javax.sql.DataSource;
 @PropertySource(value = {"classpath:application.properties"})
 @ComponentScan({"net.proselyte.hibernate"})
 public class HibernateConfig {
-
+/*
     @Autowired
     private DataSource dataSource;
 
@@ -29,10 +30,13 @@ public class HibernateConfig {
         sessionFactory.setPackagesToScan(new String[] { "net.proselyte.hibernate" });
         return sessionFactory;
     }
-
+*/
     @Bean
     public UserDAOHibernateImpl getNewDevHibernateDAO() {
         return new UserDAOHibernateImpl();
     }
-
+    @Bean
+    public UserJpiImpl getUserJpiImpl() {
+        return new UserJpiImpl();
+    }
 }

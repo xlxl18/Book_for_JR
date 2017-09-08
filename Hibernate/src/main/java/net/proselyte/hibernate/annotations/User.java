@@ -2,17 +2,14 @@ package net.proselyte.hibernate.annotations;
 
 
 import java.sql.Timestamp;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name= "hibernate_developers")
 
+@Table(name= "hibernate_developers")
+@NamedQueries ({
+        @NamedQuery(name = "User.getAll", query = "SELECT c from User c"),
+        @NamedQuery(name = "User.getFrom", query = "SELECT c from User c WHERE c.name =: name")})
 public class User implements Comparable {
     @Id @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column (name = "id")

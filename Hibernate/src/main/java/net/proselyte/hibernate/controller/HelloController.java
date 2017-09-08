@@ -1,10 +1,10 @@
-package net.proselyte.hibernate;
+package net.proselyte.hibernate.controller;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.sql.Timestamp;
 import net.proselyte.hibernate.annotations.User;
-import net.proselyte.hibernate.servise.UserJsonObject;
+import net.proselyte.hibernate.servise.Json.UserJsonObject;
 import net.proselyte.hibernate.servise.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -24,6 +24,9 @@ public class HelloController {
     @Qualifier("devHibernateService")
     private UserService userService;
 
+
+
+
     @RequestMapping(value="/", method = RequestMethod.GET)
     public String printWelcome0(ModelMap model) {
         model.addAttribute("message", "Hello, javaRash!");
@@ -33,16 +36,11 @@ public class HelloController {
 
     @RequestMapping(value = "/viewusers", method = RequestMethod.GET)
     public String printHibernate(ModelMap model) {
-        //List<User> listResults = userService.listUsersReturn();
-       // model.addAttribute("listResults", listResults);
-
-        return "viewusers";
+      return "viewusers";
     }
     @RequestMapping("/deleteUser")
     public String deleteUser(@RequestParam int id, ModelMap model)
     {   userService.removeUser(id);
-       // List<User> listResults = userService.listUsersReturn();
-        //model.addAttribute("listResults", listResults);
         return "viewusers";
     }
 
