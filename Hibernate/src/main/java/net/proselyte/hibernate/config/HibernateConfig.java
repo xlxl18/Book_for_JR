@@ -30,8 +30,6 @@ public class HibernateConfig {
         return sessionFactory;
     }
 
-
-
     @Bean
     public UserDAOHibernateImpl getNewDevHibernateDAO() {
         return new UserDAOHibernateImpl();

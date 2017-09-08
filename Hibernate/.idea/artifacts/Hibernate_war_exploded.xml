@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" build-on-make="true" name="Hibernate:war exploded">
+  <artifact type="exploded-war" name="Hibernate:war exploded">
     <output-path>$PROJECT_DIR$/target/Hibernate</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
@@ -41,6 +41,8 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:4.2.1.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-tx:4.2.1.RELEASE" />
           <element id="library" level="project" name="Maven: jstl:jstl:1.2" />
+          <element id="library" level="project" name="Maven: commons-dbcp:commons-dbcp:1.4" />
+          <element id="library" level="project" name="Maven: commons-pool:commons-pool:1.5.4" />
           <element id="library" level="project" name="Maven: org.glassfish:javax.faces:2.2.10" />
           <element id="library" level="project" name="Maven: com.google.code.gson:gson:2.2.2" />
         </element>

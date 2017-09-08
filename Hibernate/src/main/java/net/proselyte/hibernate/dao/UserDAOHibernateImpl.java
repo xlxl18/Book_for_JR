@@ -9,15 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import java.sql.Timestamp;
 import java.util.*;
-import java.util.List;
+
 
 @Repository
 public class UserDAOHibernateImpl implements UserDAOHibernate {
+   // private final Connection con;
     @Autowired
     private SessionFactory sessionFactory;
-    private Session getCurrentSession() {
-        return this.sessionFactory.getCurrentSession();
-    }
+
     public SessionFactory getSessionFactory() {
         return sessionFactory;
     }

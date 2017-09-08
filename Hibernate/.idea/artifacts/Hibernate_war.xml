@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact type="war" build-on-make="true" name="Hibernate:war">
+  <artifact type="war" name="Hibernate:war">
     <output-path>$PROJECT_DIR$/target</output-path>
     <root id="archive" name="Hibernate.war">
       <element id="artifact" artifact-name="Hibernate:war exploded" />

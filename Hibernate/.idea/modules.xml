@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Hibernate.iml" filepath="$PROJECT_DIR$/Hibernate.iml" />
-      <module fileurl="file://$USER_HOME$/Downloads/zk-bin-8.0.2.2/zk-bin-8.0.2.2.iml" filepath="$USER_HOME$/Downloads/zk-bin-8.0.2.2/zk-bin-8.0.2.2.iml" />
+
     </modules>
   </component>
 </project>
