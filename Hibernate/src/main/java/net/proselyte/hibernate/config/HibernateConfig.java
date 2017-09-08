@@ -2,7 +2,7 @@ package net.proselyte.hibernate.config;
 
 
 
-import net.proselyte.hibernate.dao.UserDAOHibernateImpl;
+
 import net.proselyte.hibernate.dao.UserJpiImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -15,7 +15,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableTransactionManagement
-@PropertySource(value = {"classpath:application.properties"})
+//@PropertySource(value = {"classpath:application.properties"})
 @ComponentScan({"net.proselyte.hibernate"})
 public class HibernateConfig {
 /*
@@ -31,10 +31,7 @@ public class HibernateConfig {
         return sessionFactory;
     }
 */
-    @Bean
-    public UserDAOHibernateImpl getNewDevHibernateDAO() {
-        return new UserDAOHibernateImpl();
-    }
+
     @Bean
     public UserJpiImpl getUserJpiImpl() {
         return new UserJpiImpl();

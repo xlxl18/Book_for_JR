@@ -1,6 +1,7 @@
 package net.proselyte.hibernate.annotations;
 
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import javax.persistence.*;
 
@@ -8,9 +9,10 @@ import javax.persistence.*;
 
 @Table(name= "hibernate_developers")
 @NamedQueries ({
-        @NamedQuery(name = "User.getAll", query = "SELECT c from User c"),
-        @NamedQuery(name = "User.getFrom", query = "SELECT c from User c WHERE c.name =: name")})
-public class User implements Comparable {
+           @NamedQuery(name = "User.getAll", query = "SELECT c from User c"),
+          //  @NamedQuery(name = "User.getFrom", query = "SELECT c from User c WHERE c.name =: name"
+})
+public class User implements Comparable, Serializable {
     @Id @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column (name = "id")
     private int id;

@@ -1,19 +1,13 @@
 package net.proselyte.hibernate.dao;
 
 import net.proselyte.hibernate.annotations.User;
-import net.proselyte.hibernate.dao.UserDAOHibernate;
-//import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.*;
@@ -22,7 +16,8 @@ import javax.persistence.*;
 @Service("jpaContactService")
 @Transactional
 public class UserJpiImpl implements UserDAOHibernate {
-    public EntityManager em = Persistence.createEntityManagerFactory("COLIBRI").createEntityManager();
+    @PersistenceContext
+    public EntityManager em;
 
 
 
@@ -60,7 +55,7 @@ public class UserJpiImpl implements UserDAOHibernate {
     }
     @Override //готов
     public List<User> listUsersReturnFROM(int start, int maxRows, String searchParameter) {
-        List<User> users = null;
+
         Query q = em.createQuery("FROM User");
         if (null != searchParameter && !searchParameter.equals("")) {
             q = em.createQuery("FROM User WHERE  name=?");
