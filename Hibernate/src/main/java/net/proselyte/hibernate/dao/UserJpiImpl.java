@@ -1,31 +1,24 @@
 package net.proselyte.hibernate.dao;
-
 import net.proselyte.hibernate.annotations.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
-
 import java.sql.Timestamp;
 import java.util.List;
-
 import javax.persistence.*;
 
-@Repository
-@Service("jpaContactService")
-@Transactional
+@Repository //- указывает на то, что класс является репозиторием доступа к данным.
+@Transactional(readOnly = false) //Перед исполнением метода помеченного данной аннотацией начинается транзакция,
+// после выполнения метода транзакция коммитится, при выбрасывании RuntimeException откатывается.
 public class UserJpiImpl implements UserDAOHibernate {
-    @PersistenceContext
-    public EntityManager em;
-
-
+    @PersistenceContext // указывает на необходимость внедрения persistence контекста(entity manager).
+    public EntityManager em;// менеджер сущностей
 
     @Override //готов
     public Integer addUser(String user, int age, byte isAdmin, Timestamp date) {
-        em.getTransaction().begin();
-        em.merge(new User(user, age, isAdmin, date));
-        em.getTransaction().commit();
+        User us = new User();
+        us.setName(user); us.setAge(age); us.setIsAdmin(isAdmin); us.setDate(date);
+        em.merge(user);
+
         return 5;
   }
 
@@ -45,8 +38,7 @@ public class UserJpiImpl implements UserDAOHibernate {
 
     @Override // готов
     public List<User> getAllUsers(String nameOfUser){
-        TypedQuery<User> namedQuery = em.createNamedQuery("User.getAll", User.class);
-        return namedQuery.getResultList();
+        return em.createQuery("FROM User u").getResultList();
     }
     @Override // готов
     public User getUser(int id){
@@ -56,7 +48,7 @@ public class UserJpiImpl implements UserDAOHibernate {
     @Override //готов
     public List<User> listUsersReturnFROM(int start, int maxRows, String searchParameter) {
 
-        Query q = em.createQuery("FROM User");
+        Query q = em.createQuery("from User");
         if (null != searchParameter && !searchParameter.equals("")) {
             q = em.createQuery("FROM User WHERE  name=?");
             q.setParameter(searchParameter, User.class );

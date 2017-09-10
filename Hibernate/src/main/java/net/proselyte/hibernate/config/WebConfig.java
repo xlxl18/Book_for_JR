@@ -8,10 +8,11 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.context.annotation.Import;
 
 @Configuration
-@ComponentScan({"net.proselyte.hibernate"})
 @EnableWebMvc
+@Import(PersistenceJPAConfig.class)
 public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Bean

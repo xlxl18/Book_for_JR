@@ -1,6 +1,4 @@
 package net.proselyte.hibernate.config;
-
-
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class AppInit extends AbstractAnnotationConfigDispatcherServletInitializer {
@@ -18,7 +16,7 @@ public class AppInit extends AbstractAnnotationConfigDispatcherServletInitialize
     protected Class<?>[] getServletConfigClasses() {
 
         return new Class<?>[]{
-                WebConfig.class
+               WebConfig.class
         };
     }
 
