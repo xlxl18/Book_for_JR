@@ -1,4 +1,5 @@
 package net.proselyte.hibernate.servise;
+
 import java.sql.Timestamp;
 import net.proselyte.hibernate.annotations.User;
 import net.proselyte.hibernate.dao.UserDAOHibernate;
@@ -12,6 +13,7 @@ import java.util.List;
 public class UserServiceImpl  implements  UserService {
 
     @Autowired
+   // @Qualifier("getNewDevHibernateDAO")
     @Qualifier("getUserJpiImpl")
     private UserDAOHibernate userDAOHibernate;
 

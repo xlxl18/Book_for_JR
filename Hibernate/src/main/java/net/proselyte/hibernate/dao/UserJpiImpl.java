@@ -60,6 +60,6 @@ public class UserJpiImpl implements UserDAOHibernate {
     }
     @Override // готов
     public int getCountUsers(){
-        return em.createNamedQuery("User.getAll", User.class).getMaxResults();
+        return em.createNamedQuery("User.getAll", User.class).getResultList().size();
     }
 }
