@@ -71,8 +71,6 @@
             <version>4.2.1.RELEASE</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
-
-
         <dependency>
             <groupId>javassist</groupId>
             <artifactId>javassist</artifactId>
@@ -110,11 +108,6 @@
             <artifactId>commons-dbcp</artifactId>
             <version>1.4</version>
         </dependency>
-
-
-        <!--JSF (include "jsf-api" and "jsf-impl")-->
-
-
         <!-- Google gson-2.2.2 jar -->
         <dependency>
             <groupId>com.google.code.gson</groupId>
@@ -139,6 +132,8 @@
             <artifactId>hibernate-validator</artifactId>
             <version>4.3.0.Final</version>
         </dependency>
+
+
 
     </dependencies>
 
