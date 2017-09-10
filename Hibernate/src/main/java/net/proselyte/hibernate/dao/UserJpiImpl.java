@@ -20,15 +20,16 @@ public class UserJpiImpl implements UserDAOHibernate {
         us.setAge(age);
         us.setIsAdmin(isAdmin);
         us.setDate(date);
-        em.merge(us);
+        em.persist(us);
 
         return 5;
   }
 
     @Override //готов
     public Integer updateUser(User user) {
-       em.refresh(user);
-      return 5;
+
+       em.merge(user);
+        return 5;
     }
     @Override // готов
     public void removeUser(int id) {

@@ -139,7 +139,7 @@ public class HelloController {
     @RequestMapping(value = "/editUser", method = RequestMethod.POST)
     public ModelAndView testing4 (@ModelAttribute ("user") User user, ModelMap model) {
         userService.updateUser(user);
-        model.addAttribute("message", "User "+user.getName()+ " successfully added!");
+        model.addAttribute("message", "User "+user.getName()+ " successfully edited!");
         model.addAttribute("message2", "Make your choice, please.");
         return new ModelAndView("index");
     }
