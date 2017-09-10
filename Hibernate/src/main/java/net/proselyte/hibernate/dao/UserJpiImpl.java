@@ -55,7 +55,7 @@ public class UserJpiImpl implements UserDAOHibernate {
     public List<User> listUsersReturnFROM(int start, int maxRows, String name) {
         TypedQuery <User> q = em.createNamedQuery("User.getAll", User.class);
         if (null != name && !name.equals("")) {
-            q = em.createNamedQuery("User.getFrom" + name, User.class);
+            q = em.createNamedQuery("User.getFrom", User.class);
             q.setParameter("name", name );
         }
         q.setFirstResult(start);

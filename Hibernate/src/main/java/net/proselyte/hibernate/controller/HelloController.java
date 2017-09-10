@@ -61,6 +61,7 @@ public class HelloController {
         // Выбор параметра поиска
         String searchParameter = request.getParameter("sSearch");
 
+
         //Create page list data
         // Создание данных списка страниц
         List<User> personsList = createPaginationDataOnSearchParameter(pageNumber, pageDisplayLength, searchParameter);
@@ -153,7 +154,7 @@ public class HelloController {
     @RequestMapping("searchUser")
     public ModelAndView searchUser(@RequestParam("searchName") String searchName){
         List<User> userList = userService.getAllUsers(searchName);
-        return new ModelAndView("viewusers", "viewusers", userList);
+        return new ModelAndView("userList", "userList", userList);
     }
 
 
