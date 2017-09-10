@@ -153,7 +153,7 @@ public class HelloController {
     @RequestMapping("searchUser")
     public ModelAndView searchUser(@RequestParam("searchName") String searchName){
         List<User> userList = userService.getAllUsers(searchName);
-        return new ModelAndView("userList", "userList", userList);
+        return new ModelAndView("viewusers", "viewusers", userList);
     }
 
 

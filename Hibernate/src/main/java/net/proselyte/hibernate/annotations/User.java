@@ -14,7 +14,7 @@ import javax.persistence.*;
 @ToString
 @NamedQueries ({
            @NamedQuery(name = "User.getAll", query = "SELECT c from User c"),
-           //@NamedQuery(name = "User.getFrom", query = "SELECT c from User c WHERE c.name =: name")
+           @NamedQuery(name = "User.getFrom", query = "SELECT c FROM User c WHERE c.name = :name"),
 })
 public class User implements Comparable, Serializable {
     @Id @GeneratedValue (strategy = GenerationType.IDENTITY)

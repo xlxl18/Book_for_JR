@@ -40,12 +40,23 @@ public class UserJpiImpl implements UserDAOHibernate {
     public User getUser(int id){
         return em.find(User.class, id);
     }
-    @Override //готов
-    public List<User> listUsersReturnFROM(int start, int maxRows, String searchParameter) {
-        Query q = em.createQuery("from User");
+     //готов
+    public List<User> listUsersReturnFROM2(int start, int maxRows, String searchParameter) {
+        Query q = em.createQuery("from User u");
         if (null != searchParameter && !searchParameter.equals("")) {
-            q = em.createQuery("FROM User WHERE  name=?");
+            q = em.createQuery("FROM User WHERE name=?");
             q.setParameter(searchParameter, User.class );
+        }
+        q.setFirstResult(start);
+        q.setMaxResults(maxRows);
+
+        return q.getResultList();
+    }
+    public List<User> listUsersReturnFROM(int start, int maxRows, String name) {
+        TypedQuery <User> q = em.createNamedQuery("User.getAll", User.class);
+        if (null != name && !name.equals("")) {
+            q = em.createNamedQuery("User.getFrom" + name, User.class);
+            q.setParameter("name", name );
         }
         q.setFirstResult(start);
         q.setMaxResults(maxRows);
