@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface UserDAOHibernate {
 
-     Integer addUser(String name, int age, byte isAdmin, Timestamp date);
+     void addUser(String name, int age, byte isAdmin, Timestamp date);
      Integer updateUser(User user);
      List<User> getAllUsers(String nameOfUser);
      List<User> listUsersReturnFROM(int start, int maxRows, String searchParameter);

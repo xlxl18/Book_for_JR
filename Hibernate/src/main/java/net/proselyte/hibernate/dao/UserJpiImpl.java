@@ -14,27 +14,22 @@ public class UserJpiImpl implements UserDAOHibernate {
     public EntityManager em;// менеджер сущностей
 
     @Override //готов
-    public Integer addUser(String user, int age, byte isAdmin, Timestamp date) {
+    public void addUser(String user, int age, byte isAdmin, Timestamp date) {
         User us = new User();
         us.setName(user);
         us.setAge(age);
         us.setIsAdmin(isAdmin);
         us.setDate(date);
         em.persist(us);
-
-        return 5;
-  }
+    }
 
     @Override //готов
     public Integer updateUser(User user) {
-
-       em.merge(user);
-        return 5;
+      return em.merge(user).getId();
     }
     @Override // готов
     public void removeUser(int id) {
        em.remove(getUser(id));
-
     }
 
     @Override // готов
@@ -44,7 +39,6 @@ public class UserJpiImpl implements UserDAOHibernate {
     @Override // готов
     public User getUser(int id){
         return em.find(User.class, id);
-
     }
     @Override //готов
     public List<User> listUsersReturnFROM(int start, int maxRows, String searchParameter) {

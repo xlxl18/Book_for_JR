@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface UserService  {
 
-    Integer addUser(String name, int age, byte isAdmin, Timestamp date);
+    void addUser(String name, int age, byte isAdmin, Timestamp date);
     Integer updateUser(User user);
     void removeUser(int user);
     User getUser(int id);

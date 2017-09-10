@@ -115,12 +115,10 @@ public class HelloController {
 
     @RequestMapping(value = "/adduserform", method = RequestMethod.POST)
     public ModelAndView testing2 (@ModelAttribute ("user") User user, ModelMap model) {
-       int test = userService.addUser(user.getName(), user.getAge(), user.getIsAdmin(), new Timestamp(System.currentTimeMillis()));
-       if (test > 0) {
+        userService.addUser(user.getName(), user.getAge(), user.getIsAdmin(), new Timestamp(System.currentTimeMillis()));
         model.addAttribute("message", "User successfully saved!");
-        model.addAttribute("message2", "Make your choice, please.");}
-        else {model.addAttribute("message", "Error adding user!");
-           model.addAttribute("message2", "Try again.");}
+        model.addAttribute("message2", "Make your choice, please.");
+
         return new ModelAndView("index");
     }
 
@@ -128,7 +126,6 @@ public class HelloController {
     public ModelAndView editUser(@RequestParam int id, @ModelAttribute User user) {
         ModelAndView mv = new ModelAndView();
         user = userService.getUser(id);
-
         mv.addObject("message", "Edit User");
         mv.addObject("message2", "editUser");
         mv.setViewName("adduser");//страничка jsp которую я вызываю
@@ -138,9 +135,18 @@ public class HelloController {
 
     @RequestMapping(value = "/editUser", method = RequestMethod.POST)
     public ModelAndView testing4 (@ModelAttribute ("user") User user, ModelMap model) {
-        userService.updateUser(user);
+        int idOldUser = user.getId();
+        int idNewUser =  userService.updateUser(user);
+
+        if (idOldUser != idNewUser) {
         model.addAttribute("message", "User "+user.getName()+ " successfully edited!");
         model.addAttribute("message2", "Make your choice, please.");
+        }
+
+        else {
+        model.addAttribute("message", "User "+user.getName()+ " successfully edited!");
+        model.addAttribute("message2", "Make your choice, please.");
+        }
         return new ModelAndView("index");
     }
 
