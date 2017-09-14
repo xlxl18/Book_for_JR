@@ -5,6 +5,9 @@ import org.springframework.transaction.annotation.Transactional;
 import java.sql.Timestamp;
 import java.util.List;
 import javax.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 @Repository //- указывает на то, что класс является репозиторием доступа к данным.
 @Transactional //Перед исполнением метода помеченного данной аннотацией начинается транзакция,

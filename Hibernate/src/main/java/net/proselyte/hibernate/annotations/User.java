@@ -22,6 +22,8 @@ public class User implements Comparable, Serializable {
     @Setter
     @Column (name = "id")
     private int id;
+    @Getter
+    @Setter
     @Column (name = "NAME")
     private String name;
     @Getter
@@ -39,34 +41,10 @@ public class User implements Comparable, Serializable {
 
     public User() {}
 
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
+    public User(String name, int age, byte isAdmin, Timestamp date) {
         this.name = name;
-    }
-    public int getAge() {
-        return age;
-    }
-    public void setAge(int age) {
         this.age = age;
-    }
-    public byte getIsAdmin() {
-        return isAdmin;
-    }
-    public void setIsAdmin(byte isAdmin) {
         this.isAdmin = isAdmin;
-    }
-    public Timestamp getDate() {
-        return date;
-    }
-    public void setDate(Timestamp date) {
         this.date = date;
     }
 
