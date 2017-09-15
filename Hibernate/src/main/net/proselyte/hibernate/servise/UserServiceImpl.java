@@ -12,8 +12,8 @@ import java.util.List;
 @Service("devHibernateService")
 public class UserServiceImpl  implements  UserService {
 
-    @Autowired
     @Qualifier("getUserJpiImpl")
+    @Autowired
     private UserDAOHibernate userDAOHibernate;
 
     @Override

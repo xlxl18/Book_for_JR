@@ -75,23 +75,21 @@ public class PersistenceJPAConfig{
     @Bean // JpaVendorAdapter - адаптер поставщика, вместо persistence.xml:
     public JpaVendorAdapter jpaVendorAdapter() {
         HibernateJpaVendorAdapter hibernateJpaVendorAdapter = new HibernateJpaVendorAdapter();
-
         return hibernateJpaVendorAdapter;
     }
 
-    @Bean
-    public UserJpiImpl getUserJpiImpl() {
-        return new UserJpiImpl();
-    }
-    @Bean // капец нужная хрень для инекции из контейнера в PersistenceContext
+    @Bean // капец нужная хрень для инекции из контейнера в PersistenceContext, угрохал кучу времени пока разобрался
     public PersistenceExceptionTranslationPostProcessor exceptionTranslation(){
         return new PersistenceExceptionTranslationPostProcessor();
     }
     Properties additionalProperties() {
         Properties properties = new Properties();
-        properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
+        properties.setProperty("hibernate.hbm2ddl.auto", "update");
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
         return properties;
     }
 
+
+
 }
+

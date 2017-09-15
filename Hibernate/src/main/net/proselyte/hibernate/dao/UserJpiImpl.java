@@ -1,5 +1,6 @@
 package net.proselyte.hibernate.dao;
 import net.proselyte.hibernate.annotations.User;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import java.sql.Timestamp;
@@ -10,6 +11,7 @@ import javax.persistence.*;
 @Transactional //Перед исполнением метода помеченного данной аннотацией начинается транзакция,
 // после выполнения метода транзакция коммитится, при выбрасывании RuntimeException откатывается.
 public class UserJpiImpl implements UserDAOHibernate {
+
     @PersistenceContext // указывает на необходимость внедрения persistence контекста(entity manager).
     public EntityManager em;// менеджер сущностей
 
@@ -41,17 +43,6 @@ public class UserJpiImpl implements UserDAOHibernate {
         return em.find(User.class, id);
     }
      //готов
-    public List<User> listUsersReturnFROM2(int start, int maxRows, String searchParameter) {
-        Query q = em.createQuery("from User u");
-        if (null != searchParameter && !searchParameter.equals("")) {
-            q = em.createQuery("FROM User WHERE name=?");
-            q.setParameter(searchParameter, User.class );
-        }
-        q.setFirstResult(start);
-        q.setMaxResults(maxRows);
-
-        return q.getResultList();
-    }
     public List<User> listUsersReturnFROM(int start, int maxRows, String name) {
         TypedQuery <User> q = em.createNamedQuery("User.getAll", User.class);
         if (null != name && !name.equals("")) {
@@ -66,5 +57,14 @@ public class UserJpiImpl implements UserDAOHibernate {
     @Override // готов
     public int getCountUsers(){
         return em.createNamedQuery("User.getAll", User.class).getResultList().size();
+    }
+
+                    // Singleton:
+    private static final UserJpiImpl INSTANCE = new UserJpiImpl();
+    //to prevent creating another instance of Singleton
+    private UserJpiImpl(){}
+    @Bean //по умолчанию Спринг создаст создан один бин а не много, но думаю синглтон все же уместен тут
+    public static UserJpiImpl getUserJpiImpl(){
+        return INSTANCE;
     }
 }
