@@ -21,7 +21,6 @@ import java.util.List;
 //@SessionAttributes("user")
 public class HelloController {
     @Autowired
-    @Qualifier("devHibernateService")
     private UserService userService;
 
 

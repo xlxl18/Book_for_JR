@@ -3,7 +3,7 @@ import net.proselyte.hibernate.annotations.User;
 import org.testng.annotations.Test;
 import org.testng.Assert;
 
-@Test (dependsOnGroups = {"init. *"})
+@Test (dependsOnGroups = {"init"}, alwaysRun = true)  // группа зависимости + мягкая зависмость
 public class UserTest {
     java.sql.Timestamp timestamp = java.sql.Timestamp.valueOf("2007-09-23 10:10:10.0");
     private User user = new User("Zaza",55,((byte) 1), timestamp );

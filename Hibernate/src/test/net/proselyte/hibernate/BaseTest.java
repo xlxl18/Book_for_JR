@@ -1,9 +1,14 @@
 package net.proselyte.hibernate;
+import net.proselyte.hibernate.annotations.User;
 import org.testng.annotations.Test;
 import org.testng.Assert;
 
-@Test (groups = "init")
+@Test(groups = "init")
 public class BaseTest {
-    public void correctVM () {}
+    @Test
+    public void correctVM () {
+        System.out.println(555);
+
+    }
     public void serverStartedOk () {}
 }
