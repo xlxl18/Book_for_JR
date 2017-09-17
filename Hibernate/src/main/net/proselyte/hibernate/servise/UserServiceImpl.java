@@ -5,11 +5,12 @@ import net.proselyte.hibernate.annotations.User;
 import net.proselyte.hibernate.dao.UserDAOHibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service("devHibernateService")
+@Service
 public class UserServiceImpl  implements  UserService {
 
     @Qualifier("getUserJpiImpl")
@@ -44,6 +45,5 @@ public class UserServiceImpl  implements  UserService {
     public int getCountUsers(){
         return userDAOHibernate.getCountUsers();
     }
-
 
 }
