@@ -41,7 +41,7 @@ public class PersistenceJPAConfig{
         p.setDriverClassName("com.mysql.jdbc.Driver");
         p.setUsername("root");
         p.setPassword("root");
-        p.setJmxEnabled(true);
+      /*  p.setJmxEnabled(true);
         p.setTestWhileIdle(false);
         p.setTestOnBorrow(true);
         p.setValidationQuery("SELECT 1");
@@ -59,7 +59,7 @@ public class PersistenceJPAConfig{
         p.setJdbcInterceptors(
                 "org.apache.tomcat.jdbc.pool.interceptor.ConnectionState;"+
                         "org.apache.tomcat.jdbc.pool.interceptor.StatementFinalizer");
-        DataSource datasource = new DataSource();
+    */    DataSource datasource = new DataSource();
         datasource.setPoolProperties(p);
         return datasource ;
     }
@@ -87,6 +87,12 @@ public class PersistenceJPAConfig{
         Properties properties = new Properties();
         properties.setProperty("hibernate.hbm2ddl.auto", "update");
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
+        properties.setProperty("hibernate.c3p0.min_size", "7");
+        properties.setProperty("hibernate.c3p0.max_size", "53");
+        properties.setProperty("hibernate.c3p0.timeout", "100");
+        properties.setProperty("hibernate.c3p0.max_statements", "50");
+        properties.setProperty("hibernate.c3p0.idle_test_period", "1000");
+        properties.setProperty("hibernate.c3p0.validate", "true");
         return properties;
     }
 

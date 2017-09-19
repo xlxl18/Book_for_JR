@@ -34,11 +34,12 @@ public class HelloController {
     }
 
     @RequestMapping(value = "/viewusers", method = RequestMethod.GET)
-    public String printHibernate(ModelMap model) {
+    public String printHibernate() {
       return "viewusers";
     }
+
     @RequestMapping("/deleteUser")
-    public String deleteUser(@RequestParam int id, ModelMap model)
+    public String deleteUser(@RequestParam int id)
     {   userService.removeUser(id);
         return "viewusers";
     }
@@ -85,9 +86,8 @@ public class HelloController {
         userJsonObject.setAaData(personsList);
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        String json2 = gson.toJson(userJsonObject);
 
-        return json2;
+        return gson.toJson(userJsonObject);
     }
 
     private List<User> createPaginationDataOnSearchParameter(Integer pageNumber, Integer pageDisplayLength, String searchParameter) {

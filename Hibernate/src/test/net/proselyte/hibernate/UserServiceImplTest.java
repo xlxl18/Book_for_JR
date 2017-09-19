@@ -20,6 +20,31 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.log4testng.Logger;
 import org.apache.tomcat.jdbc.pool.DataSource;
 
+import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.anyString;
+import static org.mockito.Matchers.anyInt;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.verify;
+
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+
+//import org.joda.time.LocalDate;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.mockito.Spy;
+import static org.mockito.Mockito.atLeastOnce;
+
+import org.springframework.context.MessageSource;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
 import java.util.Properties;
 
 
@@ -48,7 +73,7 @@ public class UserServiceImplTest extends AbstractTestNGSpringContextTests {
         HibernateTemplate hibernateTemplate = new HibernateTemplate(sessionFactory);
         return hibernateTemplate;
     }
-
+/*
     @Bean
     @Autowired
     public HibernateTransactionManager transactionManager(SessionFactory sessionFactory)
@@ -59,9 +84,15 @@ public class UserServiceImplTest extends AbstractTestNGSpringContextTests {
     }
 
 
+    @Test
+    public void listEmployees(){
+        when(service.findAllEmployees()).thenReturn(employees);
+        Assert.assertEquals(appController.listEmployees(model), "allemployees");
+        Assert.assertEquals(model.get("employees"), employees);
+        verify(service, atLeastOnce()).findAllEmployees();
+    }
 
 
-/*
 
 
     @Autowired

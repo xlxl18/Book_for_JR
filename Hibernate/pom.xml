@@ -175,6 +175,20 @@
             <version>6.9.8</version>
             <scope>test</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.mockito/mockito-all -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>1.9.5</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- Hibernate c3p0 connection pool -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-c3p0</artifactId>
+            <version>3.6.3.Final</version>
+        </dependency>
+
 
     </dependencies>
 
@@ -190,7 +204,7 @@
                 <version>2.4.3</version>
                 <configuration>
                         <!--include>**/*Test.java</include-->
-                <group>init</group>
+                <!--group>init</group-->
 
                 </configuration>
             </plugin>
@@ -204,6 +218,7 @@
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
+
         </plugins>
     </build>
 </project>
