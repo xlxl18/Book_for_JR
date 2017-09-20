@@ -18,7 +18,7 @@ public class UserJpiImplTest extends EntityDaoImplTest {
 
     public EntityManager em;// менеджер сущностей
 
-    @Qualifier("getUserJpiImpl")
+    //@Qualifier("getUserJpiImpl")
     @Autowired
     UserDAOHibernate userDAOHibernate;
 

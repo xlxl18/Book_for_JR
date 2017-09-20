@@ -59,12 +59,7 @@ public class UserJpiImpl implements UserDAOHibernate {
         return em.createNamedQuery("User.getAll", User.class).getResultList().size();
     }
 
-                    // Singleton:
-    private static final UserJpiImpl INSTANCE = new UserJpiImpl();
-    //to prevent creating another instance of Singleton
+
     private UserJpiImpl(){}
-    @Bean //по умолчанию Спринг создаст создан один бин а не много, но думаю синглтон все же уместен тут
-    public static UserJpiImpl getUserJpiImpl(){
-        return INSTANCE;
-    }
+
 }
