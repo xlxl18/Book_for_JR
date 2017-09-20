@@ -90,7 +90,7 @@ public class HelloController {
         return gson.toJson(userJsonObject);
     }
 
-    private List<User> createPaginationDataOnSearchParameter(Integer pageNumber, Integer pageDisplayLength, String searchParameter) {
+    public List<User> createPaginationDataOnSearchParameter(Integer pageNumber, Integer pageDisplayLength, String searchParameter) {
         int start = (pageNumber - 1) * pageDisplayLength ;
         int maxRows = pageDisplayLength;
         return userService.listUsersReturnFROM(start, maxRows, searchParameter);
