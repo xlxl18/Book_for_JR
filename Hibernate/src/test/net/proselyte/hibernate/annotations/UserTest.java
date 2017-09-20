@@ -1,4 +1,4 @@
-package net.proselyte.hibernate;
+package net.proselyte.hibernate.annotations;
 import net.proselyte.hibernate.annotations.User;
 import org.testng.annotations.Test;
 import org.testng.Assert;

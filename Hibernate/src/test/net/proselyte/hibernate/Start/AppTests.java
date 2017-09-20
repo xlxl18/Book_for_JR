@@ -1,4 +1,4 @@
-package net.proselyte.hibernate;
+package net.proselyte.hibernate.Start;
 /*
 import org.junit.Before;
 import org.junit.Test;

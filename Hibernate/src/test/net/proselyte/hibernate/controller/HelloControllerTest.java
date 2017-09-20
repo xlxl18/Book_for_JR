@@ -1,4 +1,4 @@
-package net.proselyte.hibernate;
+package net.proselyte.hibernate.controller;
 
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Matchers.anyInt;
@@ -42,7 +42,7 @@ public class HelloControllerTest {
     private  HelloController appController;
 
     @Spy
-    private List<User> employees = new ArrayList<User>();
+    private List<User> employees = new ArrayList<>();
 
     @Spy
     private User user = new User();
