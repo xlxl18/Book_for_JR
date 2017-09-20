@@ -10,5 +10,5 @@ public class BaseTest {
         System.out.println("Start class BaseTest");
 
     }
-    public void serverStartedOk () {}
+    public void serverStartedOk () {System.out.println("Start Test");}
 }
