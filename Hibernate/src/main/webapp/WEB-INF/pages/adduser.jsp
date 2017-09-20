@@ -7,8 +7,8 @@
 
 <% Enumeration<String> form = request.getAttributeNames();
  Object form2 = request.getAttribute("userDate");
- User s = (User)form2;
-%>
+ User us = (User)form2;
+ %>
 
 <html>
 <head>
@@ -44,24 +44,24 @@
 
          <td>
 
-             <% //я - javaKing!!!! короче - это свич для загрузки isAdmin из БД. не работает!
-                   if(s != null && s.getIsAdmin() == 1) {
+             <% //я - javaKing!!!! короче - это свич для загрузки isAdmin из БД.
+                   if(us != null && us.getIsAdmin() ==  1) {
               %>
              <form:radiobutton path="isAdmin" value="1" checked="true" />
              Yes
-             <form:radiobutton path="isAdmin" value="0"  />
+             <form:radiobutton path="isAdmin" value="1"  />
              No
              <%
                      }
-                     else if(s != null && s.getIsAdmin() == 0)  {
+                     else if(us != null && us.getIsAdmin() == 0)  {
              %>
              <form:radiobutton path="isAdmin" value="1" />
              Yes
-             <form:radiobutton path="isAdmin" value="0"  checked="true" />
+             <form:radiobutton path="isAdmin" value="1"  checked="true" />
              No
              <%
                  }
-                 else  if(s == null) {
+                 else  if(us == null) {
              %>
              <form:radiobutton path="isAdmin" value="1" />
              Yes

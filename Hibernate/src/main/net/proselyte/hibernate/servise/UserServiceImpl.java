@@ -13,7 +13,6 @@ import java.util.List;
 @Service
 public class UserServiceImpl  implements  UserService {
 
-   // @Qualifier("getUserJpiImpl")
     @Autowired
     private UserDAOHibernate userDAOHibernate;
 
