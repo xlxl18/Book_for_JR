@@ -26,19 +26,19 @@ public class HelloController {
 
 
 
-    @RequestMapping(value="/", method = RequestMethod.GET)
-    public String printWelcome0(ModelMap model) {
+    @RequestMapping(value="/", method = RequestMethod.GET)//есть тест
+    public String printWelcome(ModelMap model) {
         model.addAttribute("message", "Hello, javaRash!");
         model.addAttribute("message2", "Make your choice, please.");
         return "index";
     }
 
-    @RequestMapping(value = "/viewusers", method = RequestMethod.GET)
-    public String printHibernate() {
+    @RequestMapping(value = "/viewusers", method = RequestMethod.GET) //есть тест
+    public String viewusers() {
       return "viewusers";
     }
 
-    @RequestMapping("/deleteUser")
+    @RequestMapping("/deleteUser") //есть тест
     public String deleteUser(@RequestParam int id)
     {   userService.removeUser(id);
         return "viewusers";
@@ -96,8 +96,8 @@ public class HelloController {
         return userService.listUsersReturnFROM(start, maxRows, searchParameter);
     }
 
-    @RequestMapping(value = "/adduserform", method = RequestMethod.GET)
-    public ModelAndView testing() {
+    @RequestMapping(value = "/adduserform", method = RequestMethod.GET) //есть тест
+    public ModelAndView adduserform() {
         //method 1
         ModelAndView mv = new ModelAndView();
         mv.addObject("message", "Add New User");
@@ -107,14 +107,13 @@ public class HelloController {
         user.setDate(new Timestamp(System.currentTimeMillis()));
         mv.addObject("user", user);
 
-
         return mv;
         //method 2
         // return new ModelAndView("test-4", "user", new User());
     }
 
-    @RequestMapping(value = "/adduserform", method = RequestMethod.POST)
-    public ModelAndView testing2 (@ModelAttribute ("user") User user, ModelMap model) {
+    @RequestMapping(value = "/adduserform", method = RequestMethod.POST)//есть тест
+    public ModelAndView adduserform (@ModelAttribute ("user") User user, ModelMap model) {
         userService.addUser(user.getName(), user.getAge(), user.getIsAdmin(), new Timestamp(System.currentTimeMillis()));
         model.addAttribute("message", "User successfully saved!");
         model.addAttribute("message2", "Make your choice, please.");
@@ -125,16 +124,18 @@ public class HelloController {
     @RequestMapping(value = "/editUser", method = RequestMethod.GET)
     public ModelAndView editUser(@RequestParam int id, @ModelAttribute User user) {
         ModelAndView mv = new ModelAndView();
+
         user = userService.getUser(id);
+        mv.addObject( "userDate", user);
         mv.addObject("message", "Edit User");
         mv.addObject("message2", "editUser");
+
         mv.setViewName("adduser");//страничка jsp которую я вызываю
-        mv.addObject( "userDate", user);
         return mv;
     }
 
     @RequestMapping(value = "/editUser", method = RequestMethod.POST)
-    public ModelAndView testing4 (@ModelAttribute ("user") User user, ModelMap model) {
+    public ModelAndView editUser (@ModelAttribute ("user") User user, ModelMap model) {
         int idOldUser = user.getId();
         int idNewUser =  userService.updateUser(user);
 
@@ -149,13 +150,13 @@ public class HelloController {
         }
         return new ModelAndView("index");
     }
-
+/*
     @RequestMapping("searchUser")
     public ModelAndView searchUser(@RequestParam("searchName") String searchName){
         List<User> userList = userService.getAllUsers(searchName);
         return new ModelAndView("userList", "userList", userList);
     }
-
+*/
 
 
 }

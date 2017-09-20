@@ -90,7 +90,7 @@ public class PersistenceJPAConfig{
         properties.setProperty("hibernate.c3p0.min_size", "7");
         properties.setProperty("hibernate.c3p0.max_size", "53");
         properties.setProperty("hibernate.c3p0.timeout", "100");
-        properties.setProperty("hibernate.c3p0.max_statements", "50");
+        properties.setProperty("hibernate.c3p0.max_statements", "150");
         properties.setProperty("hibernate.c3p0.idle_test_period", "1000");
         properties.setProperty("hibernate.c3p0.validate", "true");
         return properties;
