@@ -3,6 +3,9 @@ import net.proselyte.hibernate.annotations.User;
 import org.testng.annotations.Test;
 import org.testng.Assert;
 
+import java.util.Iterator;
+import java.util.TreeSet;
+
 @Test(groups = "init")
 public class BaseTest {
     @Test
@@ -10,5 +13,9 @@ public class BaseTest {
         System.out.println("Start class BaseTest");
 
     }
-    public void serverStartedOk () {System.out.println("Start Test");}
+    public void serverStartedOk () {}
+
+
+
+
 }
