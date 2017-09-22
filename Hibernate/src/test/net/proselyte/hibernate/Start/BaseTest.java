@@ -10,7 +10,7 @@ import java.util.TreeSet;
 public class BaseTest {
     @Test
     public void correctVM () {
-        System.out.println("Start class BaseTest");
+        System.out.print("Start class BaseTest");
 
     }
     public void serverStartedOk () {}
