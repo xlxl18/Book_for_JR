@@ -12,13 +12,11 @@
 
 <html>
 <head>
-    <title>Add and edit Book form</title>
+    <title>Add and edit book form</title>
 </head>
 <body>
-
-
 <form action="viewBooks">
-    <button type="submit">View All Books</button>
+    <button type="submit">View all books</button>
 </form>
 
 <h1>${message}</h1>

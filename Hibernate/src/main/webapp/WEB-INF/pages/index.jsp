@@ -17,7 +17,7 @@
 </form>
 
 <form action="viewBooks">
-    <button type="submit">View Books</button>
+    <button type="submit">View all books</button>
 </form>
 
 

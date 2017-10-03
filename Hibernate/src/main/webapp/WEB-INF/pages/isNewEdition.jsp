@@ -15,7 +15,6 @@
     <title>Is new edition?</title>
 </head>
 <body>
-<a href="viewBooks">View All Books</a><br/>
 
 
 <td>
