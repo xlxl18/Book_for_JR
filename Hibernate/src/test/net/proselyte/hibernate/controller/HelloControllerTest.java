@@ -10,10 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import net.proselyte.hibernate.annotations.User;
-import net.proselyte.hibernate.controller.HelloController;
-import net.proselyte.hibernate.servise.Json.UserJsonObject;
-import net.proselyte.hibernate.servise.UserService;
+import net.proselyte.hibernate.annotations.Book;
+import net.proselyte.hibernate.servise.Json.JsonObject;
+import net.proselyte.hibernate.servise.BookService;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -33,7 +32,7 @@ public class HelloControllerTest {
     private java.sql.Timestamp timestamp2 = java.sql.Timestamp.valueOf("2008-08-28 18:18:10.0");
 
     @Mock
-    private UserService service;
+    private BookService service;
 
     @Mock
     private HttpServletRequest request;
@@ -42,12 +41,12 @@ public class HelloControllerTest {
     private  HelloController appController;
 
     @Spy
-    private List<User> employees = new ArrayList<>();
+    private List<Book> employees = new ArrayList<>();
 
     @Spy
-    private User user = new User();
+    private Book user = new Book();
 
-    @Spy
+  /*  @Spy
     private  ModelMap model;
 
     @Mock
@@ -76,9 +75,9 @@ public class HelloControllerTest {
 
     @Test
     public void deleteUser(){
-        doNothing().when(service).removeUser(anyInt());
+        doNothing().when(service).removeBook(anyInt());
         Assert.assertEquals(appController.deleteUser(1), "viewusers");
-        verify(service, atLeastOnce()).removeUser(1);
+        verify(service, atLeastOnce()).removeBook(1);
     }
 
     @Test
@@ -131,8 +130,8 @@ public class HelloControllerTest {
         Assert.assertEquals(appController.springPaginationDataTables(request), gson.toJson(userJsonObject));
     }
 
-    private List<User> getUserList(){
-        User user2 = new User();
+    private List<Book> getUserList(){
+        Book user2 = new User();
         user2.setId(1);
         user2.setAge(25);
         user2.setName("Axel");
@@ -157,4 +156,6 @@ public class HelloControllerTest {
         user.setId(3);
         return user;
     }
+
+    */
 }

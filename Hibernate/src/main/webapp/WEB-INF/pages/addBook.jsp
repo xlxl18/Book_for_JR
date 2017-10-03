@@ -12,21 +12,21 @@
 
 <html>
 <head>
-    <title>Add and edit user form</title>
+    <title>Add and edit Book form</title>
 </head>
 <body>
-<a href="viewusers">View All Users</a><br/>
+<a href="viewBooks">View All Books</a><br/>
 <h1>${message}</h1>
 
-<form:form method="post" commandName="user" action="${message2}">
+<form:form method="post" commandName="book" action="${message2}">
  <table>
      <tr>
             <td>
-                Name User:
+                Name Book:
             </td>
             <td>
-                <form:hidden path="id" value="${userDate.id}"/>
-                <form:input path="name" value="${userDate.name}"/>
+                <form:hidden path="id" value="${bookDate.id}"/>
+                <form:input path="name" value="${bookDate.name}"/>
             </td>
      </tr>
      <tr>
@@ -34,7 +34,7 @@
                 Age User:
          </td>
          <td>
-                <form:input path="age" value="${userDate.age}"/>
+                <form:input path="age" value="${bookDate.age}"/>
          </td>
      </tr>
      <tr>

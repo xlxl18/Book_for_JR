@@ -1,52 +1,58 @@
 package net.proselyte.hibernate.dao;
-import net.proselyte.hibernate.annotations.User;
-import org.springframework.context.annotation.Bean;
+
+import net.proselyte.hibernate.annotations.Book;
+import net.proselyte.hibernate.dao.BookDAOHibernate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import java.sql.Timestamp;
 import java.util.List;
-import javax.persistence.*;
 
 @Repository //- указывает на то, что класс является репозиторием доступа к данным.
 @Transactional //Перед исполнением метода помеченного данной аннотацией начинается транзакция,
 // после выполнения метода транзакция коммитится, при выбрасывании RuntimeException откатывается.
-public class UserJpiImpl implements UserDAOHibernate {
+public class BookJpiImpl implements BookDAOHibernate {
 
     @PersistenceContext // указывает на необходимость внедрения persistence контекста(entity manager).
     public EntityManager em;// менеджер сущностей
 
     @Override //готов
-    public void addUser(String user, int age, byte isAdmin, Timestamp date) {
-        User us = new User();
-        us.setName(user);
-        us.setAge(age);
-        us.setIsAdmin(isAdmin);
-        us.setDate(date);
+    public void addBook(String title, String description, String author, String isbn, int printYear, boolean readAlready) {
+        Book us = new Book();
+        us.setTitle(title);
+        us.setDescription(description);
+        us.setAuthor(author);
+        us.setIsbn(isbn);
+        us.setPrintYear(printYear);
+        us.setReadAlready(readAlready);
         em.persist(us);
     }
 
     @Override //готов
-    public Integer updateUser(User user) {
-      return em.merge(user).getId();
+    public Integer updateBook(Book book) {
+      return em.merge(book).getId();
     }
     @Override // готов
-    public void removeUser(int id) {
-       em.remove(getUser(id));
+    public void removeBook(int id) {
+       em.remove(getBook(id));
     }
 
     @Override // готов
-    public List<User> getAllUsers(String nameOfUser){
-        return em.createQuery("FROM User u").getResultList();
+    public List<Book> getAllBooks(String nameOfBook){
+        return em.createQuery("FROM Book u").getResultList();
     }
     @Override // готов
-    public User getUser(int id){
-        return em.find(User.class, id);
+    public Book getBook(int id){
+        return em.find(Book.class, id);
     }
      //готов
-    public List<User> listUsersReturnFROM(int start, int maxRows, String name) {
-        TypedQuery <User> q = em.createNamedQuery("User.getAll", User.class);
+    public List<Book> listBooksReturnFROM(int start, int maxRows, String name) {
+        TypedQuery <Book> q = em.createNamedQuery("Book.getAll", Book.class);
         if (null != name && !name.equals("")) {
-            q = em.createNamedQuery("User.getFrom", User.class);
+            q = em.createNamedQuery("Book.getFrom", Book.class);
             q.setParameter("name", name );
         }
         q.setFirstResult(start);
@@ -55,11 +61,11 @@ public class UserJpiImpl implements UserDAOHibernate {
         return q.getResultList();
     }
     @Override // готов
-    public int getCountUsers(){
-        return em.createNamedQuery("User.getAll", User.class).getResultList().size();
+    public int getCountBooks(){
+        return em.createNamedQuery("Book.getAll", Book.class).getResultList().size();
     }
 
 
-    private UserJpiImpl(){}
+    private BookJpiImpl(){}
 
 }

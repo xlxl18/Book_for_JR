@@ -1,10 +1,10 @@
 package net.proselyte.hibernate.servise.Json;
 
-import net.proselyte.hibernate.annotations.User;
+import net.proselyte.hibernate.annotations.Book;
 
 import java.util.List;
 
-public class UserJsonObject {
+public class JsonObject {
 
     int iTotalRecords;
 
@@ -14,7 +14,7 @@ public class UserJsonObject {
 
     String sColumns;
 
-    List<User> aaData;
+    List<Book> aaData;
 
     public int getiTotalRecords() {
 	return iTotalRecords;
@@ -48,11 +48,11 @@ public class UserJsonObject {
 	this.sColumns = sColumns;
     }
 
-    public List<User> getAaData() {
+    public List<Book> getAaData() {
         return aaData;
     }
 
-    public void setAaData(List<User> aaData) {
+    public void setAaData(List<Book> aaData) {
         this.aaData = aaData;
     }
 

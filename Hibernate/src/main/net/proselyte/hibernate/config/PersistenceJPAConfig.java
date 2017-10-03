@@ -1,5 +1,5 @@
 package net.proselyte.hibernate.config;
-import net.proselyte.hibernate.dao.UserJpiImpl;
+
 import org.apache.tomcat.jdbc.pool.DataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;

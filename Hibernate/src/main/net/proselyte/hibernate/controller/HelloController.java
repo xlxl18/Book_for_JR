@@ -3,11 +3,10 @@ package net.proselyte.hibernate.controller;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.sql.Timestamp;
-import net.proselyte.hibernate.annotations.User;
-import net.proselyte.hibernate.servise.Json.UserJsonObject;
-import net.proselyte.hibernate.servise.UserService;
+import net.proselyte.hibernate.annotations.Book;
+import net.proselyte.hibernate.servise.Json.JsonObject;
+import net.proselyte.hibernate.servise.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +20,7 @@ import java.util.List;
 //@SessionAttributes("user")
 public class HelloController {
     @Autowired
-    private UserService userService;
+    private BookService bookService;
 
 
 
@@ -40,7 +39,7 @@ public class HelloController {
 
     @RequestMapping("/deleteUser") //есть тест
     public String deleteUser(@RequestParam int id)
-    {   userService.removeUser(id);
+    {   bookService.removeBook(id);
         return "viewusers";
     }
 
@@ -64,7 +63,7 @@ public class HelloController {
 
         //Create page list data
         // Создание данных списка страниц
-        List<User> personsList = createPaginationDataOnSearchParameter(pageNumber, pageDisplayLength, searchParameter);
+        List<Book> personsList = createPaginationDataOnSearchParameter(pageNumber, pageDisplayLength, searchParameter);
 
         //Here is server side pagination logic. Based on the page number you could make call
         //to the data base create new list and send back to the client. For demo I am shuffling
@@ -75,11 +74,11 @@ public class HelloController {
         //Search functionality: Returns filtered list based on search parameter
         // Функция поиска: возвращает список фильтров на основе параметра поиска
 
-        UserJsonObject userJsonObject = new UserJsonObject();
+        JsonObject userJsonObject = new JsonObject();
         //Set Total display record
         // Встановити повний відображення запису до фильтрации
 
-        userJsonObject.setiTotalDisplayRecords(userService.getCountUsers());
+        userJsonObject.setiTotalDisplayRecords(bookService.getCountBooks());
         //Set Total record
         // Встановити загальну кількість записів после фильтрации
         userJsonObject.setiTotalRecords(personsList.size());
@@ -90,62 +89,58 @@ public class HelloController {
         return gson.toJson(userJsonObject);
     }
 
-    public List<User> createPaginationDataOnSearchParameter(Integer pageNumber, Integer pageDisplayLength, String searchParameter) {
+    public List<Book> createPaginationDataOnSearchParameter(Integer pageNumber, Integer pageDisplayLength, String searchParameter) {
         int start = (pageNumber - 1) * pageDisplayLength ;
         int maxRows = pageDisplayLength;
-        return userService.listUsersReturnFROM(start, maxRows, searchParameter);
+        return bookService.listBooksReturnFROM(start, maxRows, searchParameter);
     }
 
-    @RequestMapping(value = "/adduserform", method = RequestMethod.GET) //есть тест
+    @RequestMapping(value = "/addBookForm", method = RequestMethod.GET) //есть тест
     public ModelAndView adduserform() {
         //method 1
         ModelAndView mv = new ModelAndView();
         mv.addObject("message", "Add New User");
-        mv.addObject("message2", "adduserform");
-        mv.setViewName("adduser");//страничка jsp которую я вызываю
-        User user = new User();
-        user.setDate(new Timestamp(System.currentTimeMillis()));
-        mv.addObject("user", user);
-
+        mv.addObject("message2", "addBookform");
+        mv.setViewName("addBook");//страничка jsp которую я вызываю
+        Book book = new Book();
+        mv.addObject("book", book);
         return mv;
-        //method 2
-        // return new ModelAndView("test-4", "user", new User());
     }
-
+//String title, String description, String author, String isbn, int printYear, boolean readAlready
     @RequestMapping(value = "/adduserform", method = RequestMethod.POST)//есть тест
-    public ModelAndView adduserform (@ModelAttribute ("user") User user, ModelMap model) {
-        userService.addUser(user.getName(), user.getAge(), user.getIsAdmin(), new Timestamp(System.currentTimeMillis()));
+    public ModelAndView adduserform (@ModelAttribute ("user") Book book, ModelMap model) {
+        bookService.addBook(book.getTitle(), book.getDescription(), book.getAuthor(), book.getIsbn(),book.getPrintYear(),  book.isReadAlready());
         model.addAttribute("message", "User successfully saved!");
         model.addAttribute("message2", "Make your choice, please.");
 
         return new ModelAndView("index");
     }
 
-    @RequestMapping(value = "/editUser", method = RequestMethod.GET)
-    public ModelAndView editUser(@RequestParam int id, @ModelAttribute User user) {
+    @RequestMapping(value = "/editBook", method = RequestMethod.GET)
+    public ModelAndView editUser(@RequestParam int id, @ModelAttribute Book book) {
         ModelAndView mv = new ModelAndView();
 
-        user = userService.getUser(id);
-        mv.addObject( "userDate", user);
-        mv.addObject("message", "Edit User");
-        mv.addObject("message2", "editUser");
+        book = bookService.getBook(id);
+        mv.addObject( "BookDate", book);
+        mv.addObject("message", "Edit Book");
+        mv.addObject("message2", "editBook");
 
         mv.setViewName("adduser");//страничка jsp которую я вызываю
         return mv;
     }
 
     @RequestMapping(value = "/editUser", method = RequestMethod.POST)
-    public ModelAndView editUser (@ModelAttribute ("user") User user, ModelMap model) {
-        int idOldUser = user.getId();
-        int idNewUser =  userService.updateUser(user);
+    public ModelAndView editUser (@ModelAttribute ("book") Book book, ModelMap model) {
+        int idOldUser = book.getId();
+        int idNewUser =  bookService.updateBook(book);
 
         if (idOldUser != idNewUser) {
-        model.addAttribute("message", "User "+user.getName()+ " successfully edited!");
+        model.addAttribute("message", "User "+book.getTitle()+ " successfully edited!");
         model.addAttribute("message2", "Make your choice, please.");
         }
 
         else {
-        model.addAttribute("message", "User "+user.getName()+ " successfully edited!");
+        model.addAttribute("message", "User "+book.getTitle()+ " successfully edited!");
         model.addAttribute("message2", "Make your choice, please.");
         }
         return new ModelAndView("index");

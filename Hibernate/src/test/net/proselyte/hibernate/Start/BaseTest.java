@@ -1,5 +1,5 @@
 package net.proselyte.hibernate.Start;
-import net.proselyte.hibernate.annotations.User;
+import net.proselyte.hibernate.annotations.Book;
 import org.testng.annotations.Test;
 import org.testng.Assert;
 
