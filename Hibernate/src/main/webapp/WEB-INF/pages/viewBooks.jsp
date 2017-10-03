@@ -97,7 +97,7 @@
 			<th>Title</th>
 			<th>Description</th>
 			<th>Author</th>
-			<th>Isbn</th>
+			<th>ISBN</th>
 			<th>Print Year</th>
 			<th>Read Already</th>
 			<th>Edit</th>

@@ -121,7 +121,7 @@ public class HelloController {
         ModelAndView mv = new ModelAndView();
 
         book = bookService.getBook(id);
-        mv.addObject( "BookDate", book);
+        mv.addObject( "bookDate", book);
         mv.addObject("message", "Edit Book");
         mv.addObject("message2", "editBook");
 
@@ -135,23 +135,14 @@ public class HelloController {
         int idNewBook =  bookService.updateBook(book);
 
         if (idOldBook != idNewBook) {
-        model.addAttribute("message", "Book "+book.getTitle()+ " successfully edited!");
+        model.addAttribute("message", "The book: " + book.getTitle() + " successfully edited!");
         model.addAttribute("message2", "Make your choice, please.");
         }
 
         else {
-        model.addAttribute("message", "Book "+book.getTitle()+ " successfully edited!");
+        model.addAttribute("message", "The book: "+book.getTitle()+ " successfully edited!");
         model.addAttribute("message2", "Make your choice, please.");
         }
         return new ModelAndView("index");
     }
-/*
-    @RequestMapping("searchUser")
-    public ModelAndView searchUser(@RequestParam("searchName") String searchName){
-        List<User> userList = userService.getAllUsers(searchName);
-        return new ModelAndView("userList", "userList", userList);
-    }
-*/
-
-
 }
