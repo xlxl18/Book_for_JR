@@ -49,11 +49,11 @@ public class BookJpiImpl implements BookDAOHibernate {
         return em.find(Book.class, id);
     }
      //готов
-    public List<Book> listBooksReturnFROM(int start, int maxRows, String name) {
+    public List<Book> listBooksReturnFROM(int start, int maxRows, String title) {
         TypedQuery <Book> q = em.createNamedQuery("Book.getAll", Book.class);
-        if (null != name && !name.equals("")) {
+        if (null != title && !title.equals("")) {
             q = em.createNamedQuery("Book.getFrom", Book.class);
-            q.setParameter("name", name );
+            q.setParameter("title", title );
         }
         q.setFirstResult(start);
         q.setMaxResults(maxRows);
