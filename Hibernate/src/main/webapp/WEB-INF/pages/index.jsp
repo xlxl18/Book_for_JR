@@ -13,8 +13,8 @@
 </p>
 
 
-<a href="adduserform">Add User</a>
-<a href="viewusers">View Users</a>
+<a href="addBookForm">Add Book</a>
+<a href="viewBooks">View Books</a>
 
 </body>
 </html>

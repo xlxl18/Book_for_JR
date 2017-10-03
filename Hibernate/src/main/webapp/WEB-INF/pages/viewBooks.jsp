@@ -51,16 +51,18 @@
                 "sAjaxSource": "springPaginationDataTables.web",
                 "aoColumns": [
                     { "mData": "id" },
-                    { "mData": "name" },
-                    { "mData": "age" },
-                    { "mData": "isAdmin" },
-                    { "mData": "date" },
+                    { "mData": "title" },
+                    { "mData": "description" },
+                    { "mData": "author" },
+                    { "mData": "isbn" },
+                    { "mData": "printYear" },
+                    { "mData": "readAlready" },
 
 					{
                        // "aTargets": [5],
                         "mData": "id",
                         "mRender": function (id, type, full) {
-                            return '<a href="/editUser?id=' + parseInt(id) + '">Edit</a>';
+                            return '<a href="/editBook?id=' + parseInt(id) + '">Edit</a>';
                         }
                     },
 
@@ -68,7 +70,7 @@
 					{
                         "mData": "id",
                         "mRender": function (id, type, full) {
-                            return '<a href="/deleteUser?id=' + parseInt(id) + '">Delete</a>';
+                            return '<a href="/deleteBook?id=' + parseInt(id) + '">Delete</a>';
                         }
                     },
 
@@ -85,17 +87,19 @@
 <form:form action="" method="GET">
 
 
-<h1>     All Users     </h1>
+<h1>     All Books     </h1>
 
 <table width="70%" style="border: 3px;background: rgb(243, 244, 248);"><tr><td>
 	<table id="example" class="display" cellspacing="0" width="100%">
 		<thead>
 		<tr>
 			<th>Id</th>
-			<th>Name</th>
-			<th>Age</th>
-			<th>Is admin?</th>
-			<th>Created of Date</th>
+			<th>Title</th>
+			<th>Description</th>
+			<th>Author</th>
+			<th>Isbn</th>
+			<th>Print Year</th>
+			<th>Read Already</th>
 			<th>Edit</th>
 			<th>Delete</th>
 		</tr>
@@ -111,7 +115,7 @@
 
 </form:form>
 
-	<br/><a href="adduserform">Add New User</a>
+	<br/><a href="addBookForm">Add New Book</a>
 </body>
 
 </html>

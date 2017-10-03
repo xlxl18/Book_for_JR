@@ -32,15 +32,15 @@ public class HelloController {
         return "index";
     }
 
-    @RequestMapping(value = "/viewusers", method = RequestMethod.GET) //есть тест
-    public String viewusers() {
-      return "viewusers";
+    @RequestMapping(value = "/viewBooks", method = RequestMethod.GET) //есть тест
+    public String viewBooks() {
+      return "viewBooks";
     }
 
-    @RequestMapping("/deleteUser") //есть тест
-    public String deleteUser(@RequestParam int id)
+    @RequestMapping("/deleteBook") //есть тест
+    public String deleteBook(@RequestParam int id)
     {   bookService.removeBook(id);
-        return "viewusers";
+        return "viewBooks";
     }
 
     @RequestMapping(value = "/springPaginationDataTables.web", method = RequestMethod.GET, produces = "application/json")
@@ -74,19 +74,19 @@ public class HelloController {
         //Search functionality: Returns filtered list based on search parameter
         // Функция поиска: возвращает список фильтров на основе параметра поиска
 
-        JsonObject userJsonObject = new JsonObject();
+        JsonObject bookJsonObject = new JsonObject();
         //Set Total display record
         // Встановити повний відображення запису до фильтрации
 
-        userJsonObject.setiTotalDisplayRecords(bookService.getCountBooks());
+        bookJsonObject.setiTotalDisplayRecords(bookService.getCountBooks());
         //Set Total record
         // Встановити загальну кількість записів после фильтрации
-        userJsonObject.setiTotalRecords(personsList.size());
-        userJsonObject.setAaData(personsList);
+        bookJsonObject.setiTotalRecords(personsList.size());
+        bookJsonObject.setAaData(personsList);
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-        return gson.toJson(userJsonObject);
+        return gson.toJson(bookJsonObject);
     }
 
     public List<Book> createPaginationDataOnSearchParameter(Integer pageNumber, Integer pageDisplayLength, String searchParameter) {
@@ -96,28 +96,28 @@ public class HelloController {
     }
 
     @RequestMapping(value = "/addBookForm", method = RequestMethod.GET) //есть тест
-    public ModelAndView adduserform() {
+    public ModelAndView addBookForm() {
         //method 1
         ModelAndView mv = new ModelAndView();
-        mv.addObject("message", "Add New User");
-        mv.addObject("message2", "addBookform");
+        mv.addObject("message", "Add New Book");
+        mv.addObject("message2", "addBookForm");
         mv.setViewName("addBook");//страничка jsp которую я вызываю
         Book book = new Book();
         mv.addObject("book", book);
         return mv;
     }
 //String title, String description, String author, String isbn, int printYear, boolean readAlready
-    @RequestMapping(value = "/adduserform", method = RequestMethod.POST)//есть тест
-    public ModelAndView adduserform (@ModelAttribute ("user") Book book, ModelMap model) {
+    @RequestMapping(value = "/addBookForm", method = RequestMethod.POST)//есть тест
+    public ModelAndView addBookForm (@ModelAttribute ("book") Book book, ModelMap model) {
         bookService.addBook(book.getTitle(), book.getDescription(), book.getAuthor(), book.getIsbn(),book.getPrintYear(),  book.isReadAlready());
-        model.addAttribute("message", "User successfully saved!");
+        model.addAttribute("message", "Book successfully saved!");
         model.addAttribute("message2", "Make your choice, please.");
 
         return new ModelAndView("index");
     }
 
     @RequestMapping(value = "/editBook", method = RequestMethod.GET)
-    public ModelAndView editUser(@RequestParam int id, @ModelAttribute Book book) {
+    public ModelAndView editBook(@RequestParam int id, @ModelAttribute Book book) {
         ModelAndView mv = new ModelAndView();
 
         book = bookService.getBook(id);
@@ -125,22 +125,22 @@ public class HelloController {
         mv.addObject("message", "Edit Book");
         mv.addObject("message2", "editBook");
 
-        mv.setViewName("adduser");//страничка jsp которую я вызываю
+        mv.setViewName("addBook");//страничка jsp которую я вызываю
         return mv;
     }
 
-    @RequestMapping(value = "/editUser", method = RequestMethod.POST)
-    public ModelAndView editUser (@ModelAttribute ("book") Book book, ModelMap model) {
-        int idOldUser = book.getId();
-        int idNewUser =  bookService.updateBook(book);
+    @RequestMapping(value = "/editBook", method = RequestMethod.POST)
+    public ModelAndView editBook (@ModelAttribute ("book") Book book, ModelMap model) {
+        int idOldBook = book.getId();
+        int idNewBook =  bookService.updateBook(book);
 
-        if (idOldUser != idNewUser) {
-        model.addAttribute("message", "User "+book.getTitle()+ " successfully edited!");
+        if (idOldBook != idNewBook) {
+        model.addAttribute("message", "Book "+book.getTitle()+ " successfully edited!");
         model.addAttribute("message2", "Make your choice, please.");
         }
 
         else {
-        model.addAttribute("message", "User "+book.getTitle()+ " successfully edited!");
+        model.addAttribute("message", "Book "+book.getTitle()+ " successfully edited!");
         model.addAttribute("message2", "Make your choice, please.");
         }
         return new ModelAndView("index");
