@@ -15,7 +15,12 @@
     <title>Add and edit Book form</title>
 </head>
 <body>
-<a href="viewBooks">View All Books</a><br/>
+
+
+<form action="viewBooks">
+    <button type="submit">View All Books</button>
+</form>
+
 <h1>${message}</h1>
 
 <form:form method="post" commandName="book" action="${message2}">
@@ -122,11 +127,7 @@
             $('#title').focus();
             return false;
         }
-        if(description.length ==0) {
-            alert('Please enter description');
-            $('#description').focus();
-            return false;
-        }
+
         if(isbn.length ==0) {
             alert('Please enter ISBN');
             $('#isbn').focus();

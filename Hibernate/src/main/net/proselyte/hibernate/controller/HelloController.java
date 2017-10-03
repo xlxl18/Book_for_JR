@@ -116,6 +116,16 @@ public class HelloController {
         return new ModelAndView("index");
     }
 
+    @RequestMapping(value = "/isNewEdition", method = RequestMethod.GET)
+    public ModelAndView isNewEdition (@RequestParam int id, @ModelAttribute Book book) {
+        ModelAndView mv = new ModelAndView();
+        book = bookService.getBook(id);
+        mv.addObject("message2", "isNewEdition");
+        mv.addObject( "bookDate", book);
+        mv.setViewName("isNewEdition");//страничка jsp которую я вызываю
+        return mv;
+    }
+
     @RequestMapping(value = "/editBook", method = RequestMethod.GET)
     public ModelAndView editBook(@RequestParam int id, @ModelAttribute Book book) {
         ModelAndView mv = new ModelAndView();
@@ -144,5 +154,14 @@ public class HelloController {
         model.addAttribute("message2", "Make your choice, please.");
         }
         return new ModelAndView("index");
+    }
+
+    @RequestMapping(value = "/yesReadAlready", method = RequestMethod.GET)
+    public ModelAndView YesReadAlready (@RequestParam int id, @ModelAttribute Book book) {
+        ModelAndView mv = new ModelAndView("viewBooks");
+        book = bookService.getBook(id);
+        book.setReadAlready(true);
+        bookService.updateBook(book);
+        return mv;
     }
 }

@@ -12,9 +12,14 @@
 <h2>${message2}</h2>
 </p>
 
+<form action="addBookForm">
+    <button type="submit">Add the book</button>
+</form>
 
-<a href="addBookForm">Add Book</a>
-<a href="viewBooks">View Books</a>
+<form action="viewBooks">
+    <button type="submit">View Books</button>
+</form>
+
 
 </body>
 </html>

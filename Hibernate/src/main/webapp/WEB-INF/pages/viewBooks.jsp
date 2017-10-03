@@ -62,7 +62,7 @@
                        // "aTargets": [5],
                         "mData": "id",
                         "mRender": function (id, type, full) {
-                            return '<a href="/editBook?id=' + parseInt(id) + '">Edit</a>';
+                            return '<a href="/isNewEdition?id=' + parseInt(id) + '">Edit</a>';
                         }
                     },
 
@@ -115,7 +115,9 @@
 
 </form:form>
 
-	<br/><a href="addBookForm">Add New Book</a>
+<form action="addBookForm">
+	<button type="submit">Add the book</button>
+</form>
 </body>
 
 </html>
