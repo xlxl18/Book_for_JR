@@ -10,7 +10,7 @@ import java.sql.Timestamp;
 import javax.persistence.*;
 
 @Entity
-@Table(name= "hibernate_developers")
+@Table
 @ToString
 @NamedQueries ({
            @NamedQuery(name = "User.getAll", query = "SELECT c from User c"),
